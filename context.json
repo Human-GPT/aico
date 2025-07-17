@@ -1,15 +1,17 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-17T15:02:15.497Z",
-    "nextUpdate": "2025-07-17T21:02:15.497Z",
-    "version": "2.0",
+    "lastUpdated": "2025-07-17T15:19:53.539Z",
+    "nextUpdate": "2025-07-17T21:19:53.539Z",
+    "version": "2.1",
     "purpose": "Aktuelle Kontextinformationen für KI-Systeme",
-    "source": "Automatisch generiert via Gemini AI",
+    "source": "Automatisch generiert via Gemini AI + News-Scraping",
     "dataQuality": {
-      "events": "good",
-      "technology": "good",
+      "events": "fallback",
+      "technology": "fallback",
       "facts": "good"
-    }
+    },
+    "newsSources": 8,
+    "techSources": 6
   },
   "currentDate": {
     "year": 2025,
@@ -19,22 +21,24 @@
     "dayOfWeek": "Donnerstag",
     "monthName": "Juli",
     "iso": "2025-07-17",
-    "timestamp": "2025-07-17T15:02:15.497Z",
-    "timezone": "UTC"
+    "timestamp": "2025-07-17T15:19:53.539Z",
+    "timezone": "UTC",
+    "weekOfYear": 29
   },
   "events": [
     {
-      "date": "Januar 2025",
+      "date": "17.7.2025",
       "category": "System",
-      "description": "Automatische Updates funktionieren"
+      "description": "Automatische Updates funktionieren",
+      "source": "AICO"
     }
   ],
   "technology": [
     {
-      "name": "JavaScript",
-      "version": "ES2025",
-      "date": "Januar 2025",
-      "description": "Sprachweiterentwicklung"
+      "name": "AICO",
+      "version": "2.0",
+      "date": "17.7.2025",
+      "description": "Aktuelle News-Integration"
     }
   ],
   "importantFacts": [
@@ -50,12 +54,16 @@
       "Multimodale Systeme",
       "LLM Integration"
     ],
-    "lastMajorUpdate": "2025-07-17"
+    "lastMajorUpdate": "2025-07-17",
+    "newsCoverage": "Letzte 7 Tage",
+    "updateFrequency": "Alle 6 Stunden"
   },
   "statistics": {
     "eventsCount": 1,
     "technologyCount": 1,
     "factsCount": 2,
-    "generationTimeMs": 459
+    "generationTimeMs": 2097,
+    "newsSourcesQueried": 8,
+    "techSourcesQueried": 6
   }
 }
