@@ -3,127 +3,437 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aktueller Kontext für KI-Systeme</title>
-    <meta name="description" content="Aktuelle Kontextinformationen für KI-Modelle - automatisch aktualisiert">
+    <title>AICO - Aktueller Kontext für KI-Systeme</title>
+    <meta name="description" content="Aktuelle Kontextinformationen für KI-Modelle - automatisch alle 6 Stunden aktualisiert">
+    <meta name="keywords" content="KI, Kontext, AI, aktuelle Ereignisse, Technologie, 2025">
+    <meta property="og:title" content="AICO - Aktueller Kontext für KI-Systeme">
+    <meta property="og:description" content="Automatisch aktualisierte Kontextinformationen für KI-Modelle">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
     <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --success: #16a34a;
+            --warning: #d97706;
+            --info: #0891b2;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--text-primary);
+            background: var(--background);
+            min-height: 100vh;
+        }
+
+        .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background: #f5f5f5;
         }
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
-        }
-        .context-section {
-            margin: 30px 0;
-            padding: 20px;
-            background: #f8f9fa;
-            border-left: 4px solid #3498db;
-            border-radius: 5px;
-        }
-        .context-section h2 {
-            color: #2980b9;
-            margin-top: 0;
-        }
-        .date-info {
-            background: #e8f5e8;
-            border-left-color: #27ae60;
-            font-size: 1.1em;
-        }
-        .important-events {
-            background: #fff3cd;
-            border-left-color: #ffc107;
-        }
-        .technology {
-            background: #e7f3ff;
-            border-left-color: #007bff;
-        }
-        .json-link {
-            display: inline-block;
-            background: #28a745;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin: 10px 0;
-        }
-        .json-link:hover {
-            background: #218838;
-        }
-        .last-updated {
-            color: #666;
-            font-style: italic;
+
+        .header {
             text-align: center;
-            margin-top: 30px;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
         }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .status-bar {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .status-item {
+            background: var(--surface);
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            min-width: 140px;
+            border: 1px solid var(--border);
+        }
+
+        .status-item .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .status-item .label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .grid {
+            display: grid;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+        }
+
+        .card {
+            background: var(--surface);
+            padding: 28px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .card-icon {
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: var(--background);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .card-content {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .date-info {
+            border-left: 4px solid var(--success);
+        }
+
+        .events-card {
+            border-left: 4px solid var(--warning);
+        }
+
+        .tech-card {
+            border-left: 4px solid var(--info);
+        }
+
+        .facts-card {
+            border-left: 4px solid var(--primary);
+        }
+
+        .data-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .data-item:last-child {
+            border-bottom: none;
+        }
+
+        .data-item strong {
+            color: var(--primary);
+            min-width: 100px;
+            font-weight: 600;
+        }
+
+        .data-item .description {
+            flex: 1;
+            color: var(--text-primary);
+        }
+
+        .data-item .meta {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-align: right;
+            min-width: 80px;
+        }
+
+        .fact-item {
+            background: var(--background);
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .json-section {
+            background: var(--surface);
+            padding: 28px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .json-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--success);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            margin: 10px;
+        }
+
+        .json-link:hover {
+            background: #15803d;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow);
+        }
+
         .usage-example {
-            background: #f0f0f0;
-            padding: 15px;
-            border-radius: 5px;
-            font-family: monospace;
-            white-space: pre-wrap;
+            background: var(--background);
+            padding: 20px;
+            border-radius: 12px;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            margin-top: 20px;
+            border: 1px solid var(--border);
+            overflow-x: auto;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .loading {
+            opacity: 0.6;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: var(--primary);
+            color: white;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .quality-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 8px;
+        }
+
+        .quality-good { background: var(--success); }
+        .quality-fallback { background: var(--warning); }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .container { padding: 16px; }
+            .card { padding: 20px; }
+            .status-bar { gap: 12px; }
+            .data-item { flex-direction: column; gap: 8px; }
+            .data-item .meta { text-align: left; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🤖 Aktueller Kontext für KI-Systeme</h1>
-        
-        <div class="context-section date-info">
-            <h2>📅 Aktuelles Datum & Zeit</h2>
-            <p><strong>Datum:</strong> <span id="current-date">Wird geladen...</span></p>
-            <p><strong>Jahr:</strong> <span id="current-year">Wird geladen...</span></p>
-            <p><strong>Wochentag:</strong> <span id="current-day">Wird geladen...</span></p>
-            <p><strong>UTC Time:</strong> <span id="current-utc">Wird geladen...</span></p>
+        <div class="header">
+            <h1>🤖 AICO</h1>
+            <p>Aktuelle Kontextinformationen für KI-Systeme - Automatisch alle 6 Stunden aktualisiert</p>
         </div>
 
-        <div class="context-section important-events">
-            <h2>🌍 Wichtige aktuelle Ereignisse</h2>
-            <div id="events-content">
-                <p>Daten werden geladen...</p>
+        <div class="status-bar">
+            <div class="status-item">
+                <span class="value" id="current-year">2025</span>
+                <div class="label">Aktuelles Jahr</div>
+            </div>
+            <div class="status-item">
+                <span class="value" id="events-count">-</span>
+                <div class="label">Ereignisse</div>
+            </div>
+            <div class="status-item">
+                <span class="value" id="tech-count">-</span>
+                <div class="label">Tech-Updates</div>
+            </div>
+            <div class="status-item">
+                <span class="value" id="facts-count">-</span>
+                <div class="label">Wichtige Fakten</div>
             </div>
         </div>
 
-        <div class="context-section technology">
-            <h2>💻 Technologie & Software Updates</h2>
-            <div id="tech-content">
-                <p>Daten werden geladen...</p>
+        <div class="grid">
+            <div class="card date-info">
+                <div class="card-header">
+                    <div class="card-icon">📅</div>
+                    <h2 class="card-title">Aktuelles Datum & Zeit</h2>
+                </div>
+                <div class="card-content">
+                    <div class="data-item">
+                        <strong>Datum:</strong>
+                        <span id="current-date" class="loading">Wird geladen...</span>
+                    </div>
+                    <div class="data-item">
+                        <strong>Jahr:</strong>
+                        <span id="current-year-detail" class="loading">Wird geladen...</span>
+                    </div>
+                    <div class="data-item">
+                        <strong>Quartal:</strong>
+                        <span id="current-quarter" class="loading">Wird geladen...</span>
+                    </div>
+                    <div class="data-item">
+                        <strong>Wochentag:</strong>
+                        <span id="current-day" class="loading">Wird geladen...</span>
+                    </div>
+                    <div class="data-item">
+                        <strong>UTC:</strong>
+                        <span id="current-utc" class="loading">Wird geladen...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card events-card">
+                <div class="card-header">
+                    <div class="card-icon">🌍</div>
+                    <h2 class="card-title">Wichtige Ereignisse <span id="events-quality" class="quality-indicator"></span></h2>
+                </div>
+                <div class="card-content" id="events-content">
+                    <p class="loading">Ereignisse werden geladen...</p>
+                </div>
+            </div>
+
+            <div class="card tech-card">
+                <div class="card-header">
+                    <div class="card-icon">💻</div>
+                    <h2 class="card-title">Technologie Updates <span id="tech-quality" class="quality-indicator"></span></h2>
+                </div>
+                <div class="card-content" id="tech-content">
+                    <p class="loading">Tech-Daten werden geladen...</p>
+                </div>
+            </div>
+
+            <div class="card facts-card">
+                <div class="card-header">
+                    <div class="card-icon">💡</div>
+                    <h2 class="card-title">Wichtige Fakten für KI <span id="facts-quality" class="quality-indicator"></span></h2>
+                </div>
+                <div class="card-content" id="facts-content">
+                    <p class="loading">Fakten werden geladen...</p>
+                </div>
             </div>
         </div>
 
-        <div class="context-section">
-            <h2>🔗 Maschinenlesbare Daten</h2>
-            <p>Für KI-Systeme und APIs:</p>
-            <a href="./context.json" class="json-link">📄 JSON Kontext-Daten</a>
+        <div class="json-section">
+            <h2 style="margin-bottom: 16px; color: var(--text-primary);">🔗 Maschinenlesbare Daten</h2>
+            <p style="margin-bottom: 20px; color: var(--text-secondary);">Für KI-Systeme, APIs und automatisierte Verarbeitung:</p>
             
-            <h3>Verwendungsbeispiel:</h3>
-            <div class="usage-example">Kontext: Aktuelle Informationen findest du auf https://deine-domain.netlify.app
+            <a href="./context.json" class="json-link" target="_blank">
+                📄 JSON Kontext-Daten
+            </a>
+            <a href="./context.json" class="json-link" download="aico-context.json" style="background: var(--info);">
+                💾 Download JSON
+            </a>
+            
+            <h3 style="margin: 24px 0 12px; color: var(--text-primary);">Verwendungsbeispiel:</h3>
+            <div class="usage-example">Kontext: Aktuelle Informationen findest du auf https://your-domain.netlify.app
 
 Die Seite enthält:
-- Aktuelles Datum und Jahr (wichtig für zeitbasierte Anfragen)
-- Wichtige Ereignisse der letzten Monate
-- Technologie-Updates und neue Software-Versionen
-- Maschinenlesbare JSON-Daten unter /context.json</div>
+• Aktuelles Datum und Jahr (wichtig für zeitbasierte Anfragen)
+• Wichtige Ereignisse seit Januar 2025
+• Technologie-Updates und neue Software-Versionen
+• Maschinenlesbare JSON-Daten unter /context.json
+
+Beispiel API-Nutzung:
+fetch('https://your-domain.netlify.app/context.json')
+  .then(response => response.json())
+  .then(data => console.log('Aktueller Kontext:', data));
+            </div>
         </div>
 
-        <div class="last-updated">
-            Letzte Aktualisierung: <span id="last-update">Wird geladen...</span>
+        <div class="footer">
+            <p>
+                <strong>Letzte Aktualisierung:</strong> <span id="last-update" class="loading">Wird geladen...</span>
+                <span class="badge" id="update-status">AUTO</span>
+            </p>
+            <p style="margin-top: 8px; font-size: 0.875rem;">
+                Generiert mit <span id="generation-time">-</span>ms • 
+                Datenqualität: <span id="data-quality">-</span> •
+                Nächstes Update: <span id="next-update">-</span>
+            </p>
         </div>
     </div>
 
     <script>
+        let contextData = null;
+
         // Aktuelles Datum und Zeit anzeigen
         function updateDateTime() {
             const now = new Date();
@@ -135,41 +445,122 @@ Die Seite enthält:
             };
             
             document.getElementById('current-date').textContent = now.toLocaleDateString('de-DE', options);
-            document.getElementById('current-year').textContent = now.getFullYear();
+            document.getElementById('current-year-detail').textContent = now.getFullYear();
+            document.getElementById('current-quarter').textContent = `Q${Math.ceil((now.getMonth() + 1) / 3)} ${now.getFullYear()}`;
             document.getElementById('current-day').textContent = now.toLocaleDateString('de-DE', { weekday: 'long' });
             document.getElementById('current-utc').textContent = now.toISOString();
-            document.getElementById('last-update').textContent = now.toLocaleString('de-DE');
+            
+            // Entferne Loading-Klassen
+            document.querySelectorAll('.loading').forEach(el => el.classList.remove('loading'));
         }
 
-        // Kontext-Daten laden
+        // Qualitäts-Indikator setzen
+        function setQualityIndicator(elementId, quality) {
+            const indicator = document.getElementById(elementId);
+            indicator.className = `quality-indicator quality-${quality}`;
+        }
+
+        // Kontext-Daten laden und anzeigen
         async function loadContextData() {
             try {
                 const response = await fetch('./context.json');
-                const data = await response.json();
+                contextData = await response.json();
+                
+                // Status-Updates
+                document.getElementById('events-count').textContent = contextData.events?.length || 0;
+                document.getElementById('tech-count').textContent = contextData.technology?.length || 0;
+                document.getElementById('facts-count').textContent = contextData.importantFacts?.length || 0;
                 
                 // Events anzeigen
                 const eventsDiv = document.getElementById('events-content');
-                eventsDiv.innerHTML = data.events.map(event => 
-                    `<p><strong>${event.date}:</strong> ${event.description}</p>`
-                ).join('');
+                if (contextData.events && contextData.events.length > 0) {
+                    eventsDiv.innerHTML = contextData.events.map(event => 
+                        `<div class="data-item">
+                            <strong>${event.category}:</strong>
+                            <span class="description">${event.description}</span>
+                            <span class="meta">${event.date}</span>
+                        </div>`
+                    ).join('');
+                    setQualityIndicator('events-quality', contextData.meta?.dataQuality?.events || 'good');
+                } else {
+                    eventsDiv.innerHTML = '<p style="color: var(--text-secondary);">Keine aktuellen Ereignisse verfügbar</p>';
+                    setQualityIndicator('events-quality', 'fallback');
+                }
                 
                 // Tech Updates anzeigen
                 const techDiv = document.getElementById('tech-content');
-                techDiv.innerHTML = data.technology.map(tech => 
-                    `<p><strong>${tech.name}:</strong> ${tech.version} (${tech.date})</p>`
-                ).join('');
+                if (contextData.technology && contextData.technology.length > 0) {
+                    techDiv.innerHTML = contextData.technology.map(tech => 
+                        `<div class="data-item">
+                            <strong>${tech.name}:</strong>
+                            <span class="description">${tech.description} (v${tech.version})</span>
+                            <span class="meta">${tech.date}</span>
+                        </div>`
+                    ).join('');
+                    setQualityIndicator('tech-quality', contextData.meta?.dataQuality?.technology || 'good');
+                } else {
+                    techDiv.innerHTML = '<p style="color: var(--text-secondary);">Keine Tech-Updates verfügbar</p>';
+                    setQualityIndicator('tech-quality', 'fallback');
+                }
+
+                // Wichtige Fakten anzeigen
+                const factsDiv = document.getElementById('facts-content');
+                if (contextData.importantFacts && contextData.importantFacts.length > 0) {
+                    factsDiv.innerHTML = contextData.importantFacts.map(fact => 
+                        `<div class="fact-item">${fact}</div>`
+                    ).join('');
+                    setQualityIndicator('facts-quality', contextData.meta?.dataQuality?.facts || 'good');
+                } else {
+                    factsDiv.innerHTML = '<p style="color: var(--text-secondary);">Keine wichtigen Fakten verfügbar</p>';
+                    setQualityIndicator('facts-quality', 'fallback');
+                }
+                
+                // Meta-Informationen
+                if (contextData.meta) {
+                    document.getElementById('last-update').textContent = 
+                        new Date(contextData.meta.lastUpdated).toLocaleString('de-DE');
+                    document.getElementById('next-update').textContent = 
+                        new Date(contextData.meta.nextUpdate).toLocaleString('de-DE');
+                }
+
+                if (contextData.statistics) {
+                    document.getElementById('generation-time').textContent = contextData.statistics.generationTimeMs || '-';
+                    
+                    const qualities = contextData.meta?.dataQuality;
+                    const qualityScore = qualities ? 
+                        Object.values(qualities).filter(q => q === 'good').length / Object.keys(qualities).length * 100 : 100;
+                    document.getElementById('data-quality').textContent = `${Math.round(qualityScore)}%`;
+                }
                 
             } catch (error) {
                 console.error('Fehler beim Laden der Kontext-Daten:', error);
+                
+                // Fallback-Anzeige
+                ['events-content', 'tech-content', 'facts-content'].forEach(id => {
+                    document.getElementById(id).innerHTML = 
+                        '<p style="color: var(--warning);">⚠️ Daten konnten nicht geladen werden</p>';
+                });
             }
         }
 
         // Beim Laden der Seite ausführen
-        updateDateTime();
-        loadContextData();
-        
-        // Datum jede Minute aktualisieren
-        setInterval(updateDateTime, 60000);
+        document.addEventListener('DOMContentLoaded', () => {
+            updateDateTime();
+            loadContextData();
+            
+            // Datum jede Minute aktualisieren
+            setInterval(updateDateTime, 60000);
+            
+            // Kontext-Daten alle 10 Minuten neu laden
+            setInterval(loadContextData, 600000);
+        });
+
+        // Service Worker für bessere Performance (optional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // Hier könnte ein Service Worker registriert werden
+            });
+        }
     </script>
 </body>
 </html> 

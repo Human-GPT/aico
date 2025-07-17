@@ -1,203 +1,264 @@
-# 🤖 KI-Kontext Website
+# 🤖 AICO - AI Context Website
 
-Eine automatisch aktualisierte Website, die aktuellen Kontext für KI-Systeme bereitstellt. Löst das Problem veralteter Trainingsdaten bei KI-Modellen.
+> **Aktuelle Kontextinformationen für KI-Systeme - Automatisch alle 6 Stunden aktualisiert**
 
-## 🎯 Problem & Lösung
+[![Update Context Data](https://github.com/Human-GPT/aico/actions/workflows/update-context.yml/badge.svg)](https://github.com/Human-GPT/aico/actions/workflows/update-context.yml)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/your-site-id/deploy-status)](https://app.netlify.com/sites/your-site-name/deploys)
 
-**Problem:** KI-Modelle kennen nur ihre Trainingsdaten, die meist über ein Jahr alt sind. Sie denken z.B., dass wir noch 2024 haben, obwohl wir bereits 2025 haben.
+AICO löst ein fundamentales Problem: **KI-Modelle wissen nicht, dass wir 2025 haben!** 
 
-**Lösung:** Eine gut strukturierte Website mit aktuellen Kontextinformationen, die:
-- Alle 6 Stunden automatisch aktualisiert wird
-- Von KI-Systemen leicht gelesen werden kann
-- Sowohl menschenlesbare als auch maschinenlesbare Formate bietet
+Diese Website stellt automatisch aktualisierte Kontextinformationen bereit, damit KI-Systeme über aktuelle Ereignisse, Technologie-Updates und wichtige Fakten informiert sind.
 
-## 🚀 Live Demo
+## 🌟 **Features**
 
-Die Website ist erreichbar unter: `https://deine-domain.netlify.app`
+### ✅ **Automatische Updates**
+- **Alle 6 Stunden** neue Daten via GitHub Actions
+- **Gemini AI Integration** für intelligente Inhaltsgenerierung  
+- **Fallback-Mechanismen** bei API-Fehlern
+- **Backup & Recovery** System
 
-**Verwendung für KI:**
-```
-Kontext: Aktuelle Informationen findest du auf https://deine-domain.netlify.app
+### 📊 **Dual-Format Bereitstellung**
+- **Human-readable:** Moderne, responsive Website
+- **Machine-readable:** JSON API für KI-Systeme
+- **Real-time Updates** ohne Page Reload
+- **Qualitätsindikatoren** für Datenzuverlässigkeit
 
-Die Seite enthält:
-- Aktuelles Datum und Jahr (wichtig für zeitbasierte Anfragen)
-- Wichtige Ereignisse der letzten Monate  
-- Technologie-Updates und neue Software-Versionen
-- Maschinenlesbare JSON-Daten unter /context.json
-```
+### 🎨 **Moderne UX**
+- **Responsive Design** für alle Geräte
+- **Performance-optimiert** mit Caching
+- **Accessibility-ready** (WCAG konform)
+- **Dark/Light Mode** Support
 
-## 📁 Projektstruktur
+## 🚀 **Live Demo**
 
-```
-├── index.html              # Hauptseite (menschenlesbar)
-├── context.json            # Kontext-Daten (maschinenlesbar)
-├── netlify.toml            # Netlify-Konfiguration
-├── package.json            # Node.js Dependencies
-├── .github/workflows/      # GitHub Actions
-│   └── update-context.yml  # Automatische Updates
-└── scripts/
-    └── update-context.js   # Update-Script
-```
+**Website:** https://your-domain.netlify.app  
+**API Endpoint:** https://your-domain.netlify.app/context.json
 
-## 🔧 Setup & Deployment
+## 📋 **API Struktur**
 
-### 1. Repository erstellen
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git remote add origin https://github.com/yourusername/ai-context-website.git
-git push -u origin main
-```
-
-### 2. Netlify Deployment
-1. Gehe zu [Netlify](https://netlify.com)
-2. Verbinde dein GitHub Repository
-3. Deploy-Einstellungen:
-   - **Build command:** `echo 'Static site - no build needed'`
-   - **Publish directory:** `.`
-
-### 3. GitHub Secrets konfigurieren
-Für automatische Updates benötigst du:
-
-1. **Google Gemini API Key:**
-   - Gehe zu [Google AI Studio](https://makersuite.google.com/app/apikey)
-   - Erstelle einen neuen API Key
-   - Füge ihn als GitHub Secret hinzu: `GEMINI_API_KEY`
-
-2. **GitHub Token:**
-   - Standardmäßig verfügbar als `GITHUB_TOKEN`
-   - Keine weitere Konfiguration nötig
-
-### GitHub Secrets hinzufügen:
-1. Gehe zu deinem Repository → Settings → Secrets and variables → Actions
-2. Klicke auf "New repository secret"
-3. Füge hinzu: `GEMINI_API_KEY` mit deinem Google API Key
-
-## ⚙️ Automatische Updates
-
-Das System aktualisiert sich automatisch:
-- **Zeitplan:** Alle 6 Stunden
-- **Manuell:** Über GitHub Actions → "Update Context Data" → "Run workflow"
-- **Bei Push:** Automatisch bei Änderungen am Code
-
-### Update-Prozess:
-1. GitHub Action startet
-2. Installiert Node.js Dependencies
-3. Script fragt Google Gemini nach aktuellen Informationen
-4. Generiert neue `context.json`
-5. Committet und pushed Änderungen
-6. Netlify deployed automatisch die neue Version
-
-## 🔗 API Endpunkte
-
-- **Website:** `https://deine-domain.netlify.app`
-- **JSON API:** `https://deine-domain.netlify.app/context.json`
-- **Alternative:** `https://deine-domain.netlify.app/api/context` (redirect zu JSON)
-
-### JSON Datenstruktur:
 ```json
 {
   "meta": {
-    "lastUpdated": "2025-01-27T10:00:00Z",
-    "nextUpdate": "2025-01-27T16:00:00Z",
-    "version": "1.0"
+    "lastUpdated": "2025-01-27T12:00:00.000Z",
+    "nextUpdate": "2025-01-27T18:00:00.000Z",
+    "version": "2.0",
+    "dataQuality": {
+      "events": "good",
+      "technology": "good", 
+      "facts": "good"
+    }
   },
   "currentDate": {
     "year": 2025,
     "month": 1,
     "day": 27,
+    "quarter": 1,
+    "dayOfWeek": "Montag",
     "iso": "2025-01-27"
   },
-  "events": [...],
-  "technology": [...],
-  "importantFacts": [...]
+  "events": [
+    {
+      "date": "Januar 2025",
+      "category": "Technologie",
+      "description": "Neue KI-Durchbrüche in multimodalen Systemen"
+    }
+  ],
+  "technology": [
+    {
+      "name": "Node.js",
+      "version": "22.x",
+      "date": "Januar 2025",
+      "description": "Neue LTS Version mit Performance-Verbesserungen"
+    }
+  ],
+  "importantFacts": [
+    "Das aktuelle Jahr ist 2025",
+    "KI-Assistenten sind alltäglich geworden"
+  ]
 }
 ```
 
-## 🎨 Features
+## ⚙️ **Setup & Installation**
 
-- **📅 Aktuelles Datum:** Immer korrekte Zeit und Datumsangaben
-- **🌍 Wichtige Ereignisse:** Aktuelle News der letzten 3 Monate
-- **💻 Tech-Updates:** Software-Versionen und neue Releases
-- **🔄 Auto-Update:** Alle 6 Stunden neue Daten
-- **📱 Responsiv:** Funktioniert auf allen Geräten
-- **⚡ Schnell:** Statische Website, optimiert für Performance
-- **🤖 KI-optimiert:** Struktur speziell für maschinelles Lesen
+### **1. Repository klonen**
+```bash
+git clone https://github.com/Human-GPT/aico.git
+cd aico
+```
 
-## 🛠️ Lokale Entwicklung
+### **2. GitHub Secret konfigurieren**
+1. Gehe zu **Settings** → **Secrets and variables** → **Actions**
+2. Klicke **"New repository secret"**
+3. Name: `GEMINI_API_KEY`
+4. Value: Dein Google Gemini API Key
+5. Klicke **"Add secret"**
+
+### **3. Netlify Deployment**
+```bash
+# Automatisches Deployment via Git
+# Oder manuell:
+npm install
+npm run build
+```
+
+### **4. GitHub Actions aktivieren**
+- Actions werden automatisch bei Push auf `main` ausgelöst
+- Manueller Trigger unter **Actions** → **"Update Context Data"** → **"Run workflow"**
+
+## 🛠️ **Lokale Entwicklung**
 
 ```bash
-# Repository klonen
-git clone https://github.com/yourusername/ai-context-website.git
-cd ai-context-website
-
 # Dependencies installieren
 npm install
 
-# Umgebungsvariablen überprüfen
-npm run validate-env
+# Environment Variable setzen
+export GEMINI_API_KEY="your-api-key"
 
-# Kontext manuell aktualisieren (benötigt GEMINI_API_KEY)
-export GEMINI_API_KEY=your_api_key_here
-npm run update-context
+# Kontext-Update testen
+node scripts/update-context.js
 
-# Website öffnen
-open index.html
+# Lokalen Server starten (optional)
+python -m http.server 8000
+# oder
+npx serve .
 ```
 
-## 📊 Monitoring
+## 🔧 **Konfiguration**
 
-Die Website zeigt:
-- **Letzte Aktualisierung:** Timestamp der letzten Änderung
-- **Nächste Aktualisierung:** Geplante Zeit des nächsten Updates
-- **Status:** Über GitHub Actions Workflow-Status
+### **Environment Variables**
+```env
+GEMINI_API_KEY=your-google-gemini-api-key
+```
 
-## 🔄 Wartung
+### **GitHub Actions Schedule**
+```yaml
+# Alle 6 Stunden
+schedule:
+  - cron: '0 */6 * * *'
+```
 
-- **Updates:** Laufen automatisch, keine manuelle Wartung nötig
-- **Kosten:** Kostenlos (Netlify Free Tier + Google Gemini API Free Tier)
-- **Überwachung:** GitHub Actions zeigt Status der Updates
-- **Backup:** Alle Daten sind im Git Repository versioniert
+### **Netlify Settings**
+```toml
+# netlify.toml
+[build]
+  publish = "."
+  
+[[headers]]
+  for = "/context.json"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
+    Access-Control-Allow-Origin = "*"
+```
 
-## 🛠️ Troubleshooting
+## 🎯 **Verwendung für KI-Systeme**
 
-### Umgebungsvariablen überprüfen
+### **Prompt-Integration**
+```
+Kontext: Aktuelle Informationen findest du auf https://your-domain.netlify.app
+
+Die Seite enthält:
+• Aktuelles Datum und Jahr (wichtig für zeitbasierte Anfragen)
+• Wichtige Ereignisse seit Januar 2025  
+• Technologie-Updates und neue Software-Versionen
+• Maschinenlesbare JSON-Daten unter /context.json
+```
+
+### **API-Integration**
+```javascript
+// JavaScript Beispiel
+const response = await fetch('https://your-domain.netlify.app/context.json');
+const context = await response.json();
+
+console.log(`Aktuelles Jahr: ${context.currentDate.year}`);
+console.log(`Letzte Events: ${context.events.length}`);
+```
+
+```python
+# Python Beispiel
+import requests
+
+response = requests.get('https://your-domain.netlify.app/context.json')
+context = response.json()
+
+print(f"Aktuelles Jahr: {context['currentDate']['year']}")
+print(f"Tech-Updates: {len(context['technology'])}")
+```
+
+## 📈 **Monitoring & Analytics**
+
+### **GitHub Actions Monitoring**
+- Status unter **Actions** Tab im Repository
+- E-Mail-Benachrichtigungen bei Fehlern
+- Logs für Debugging verfügbar
+
+### **Datenqualität**
+- **Quality Indicators** in der JSON Response
+- **Fallback-Daten** bei API-Fehlern
+- **Backup-System** für Datenintegrität
+
+### **Performance Metrics**
+- Update-Dauer in `statistics.generationTimeMs`
+- Daten-Freshness in `meta.lastUpdated`
+- Cache-Control für optimale Performance
+
+## 🔍 **Troubleshooting**
+
+### **❌ "Resource not accessible by integration"**
+```yaml
+# Lösung: Erweiterte Berechtigungen in .github/workflows/update-context.yml
+permissions:
+  contents: write
+  actions: read
+```
+
+### **❌ "GEMINI_API_KEY nicht verfügbar"**
+1. GitHub Secret korrekt gesetzt?
+2. API Key gültig und aktiv?
+3. Quota-Limits erreicht?
+
+### **❌ "JSON Parse Fehler"**
+- Fallback-Daten werden automatisch verwendet
+- Logs in GitHub Actions überprüfen
+- API-Response-Format validieren
+
+### **❌ Website zeigt veraltete Daten**
 ```bash
-npm run validate-env
+# Cache leeren
+curl -X PURGE https://your-domain.netlify.app/context.json
+
+# Oder manuell GitHub Action triggern
 ```
 
-### Häufige Probleme:
+## 🤝 **Contributing**
 
-1. **"GEMINI_API_KEY nicht gesetzt"**
-   - Für lokale Entwicklung: Setze API Key in `.env` Datei
-   - Für GitHub Actions: Füge `GEMINI_API_KEY` als Repository Secret hinzu
+1. **Fork** das Repository
+2. **Branch** erstellen: `git checkout -b feature/amazing-feature`
+3. **Commit** Änderungen: `git commit -m 'Add amazing feature'`
+4. **Push** zum Branch: `git push origin feature/amazing-feature`
+5. **Pull Request** erstellen
 
-2. **GitHub Actions schlägt fehl**
-   - Prüfe Repository Secrets in Settings → Secrets and variables → Actions
-   - Stelle sicher, dass `GEMINI_API_KEY` korrekt gesetzt ist
+### **Code Style**
+- **ESLint** für JavaScript
+- **Prettier** für Formatierung
+- **Semantic Commits** für bessere Git History
 
-3. **Lokale Tests funktionieren nicht**
-   - Führe `npm run validate-env` aus
-   - Setze Umgebungsvariable: `export GEMINI_API_KEY=your_key`
-   - Oder erstelle `.env` Datei mit dem API Key
+## 📄 **Lizenz**
 
-## 📄 Lizenz
+Dieses Projekt ist unter der **MIT Lizenz** veröffentlicht. Siehe [LICENSE](LICENSE) für Details.
 
-MIT License - Verwende es frei für deine Projekte!
+## 🙏 **Credits**
 
-## 🤝 Beitragen
+- **Google Gemini AI** für intelligente Inhaltsgenerierung
+- **GitHub Actions** für automatische Updates
+- **Netlify** für kostenloses Hosting
+- **Modern CSS** Design System
 
-1. Fork das Repository
-2. Erstelle einen Feature-Branch (`git checkout -b feature/amazing-feature`)
-3. Commit deine Änderungen (`git commit -m 'Add amazing feature'`)
-4. Push zum Branch (`git push origin feature/amazing-feature`)
-5. Öffne einen Pull Request
+## 📞 **Support**
 
-## 💡 Erweiterungsideen
+- **Issues:** [GitHub Issues](https://github.com/Human-GPT/aico/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/Human-GPT/aico/discussions)
+- **Website:** https://your-domain.netlify.app
 
-- **Mehrsprachigkeit:** Automatische Übersetzungen
-- **Kategorien:** Spezielle Kontexte für verschiedene Domänen
-- **RSS Feed:** Für automatische Benachrichtigungen
-- **Webhook:** API für externe Systeme
-- **Analytics:** Tracking der Nutzung durch KI-Systeme 
+---
+
+**⭐ Wenn dir dieses Projekt hilft, gib ihm einen Stern auf GitHub!** 

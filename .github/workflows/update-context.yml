@@ -5,12 +5,12 @@ on:
     # Läuft alle 6 Stunden
     - cron: '0 */6 * * *'
   workflow_dispatch: # Erlaubt manuellen Start
-  push:
-    branches: [ main ]
+  # Push Trigger entfernt um Endlosschleife zu vermeiden
 
-# Berechtigungen für den Workflow
+# Erweiterte Berechtigungen für den Workflow
 permissions:
   contents: write
+  actions: read
 
 jobs:
   update-context:
@@ -21,43 +21,66 @@ jobs:
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
     
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20'
+        cache: 'npm'
     
     - name: Install dependencies
       run: |
         npm init -y
         npm install axios cheerio @google/generative-ai
     
+    - name: Validate environment
+      run: |
+        echo "✅ Node Version: $(node --version)"
+        echo "✅ NPM Version: $(npm --version)"
+        if [ -z "$GEMINI_API_KEY" ]; then
+          echo "❌ GEMINI_API_KEY nicht verfügbar"
+          exit 1
+        else
+          echo "✅ GEMINI_API_KEY verfügbar"
+        fi
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+    
     - name: Update context data
       env:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-      run: node scripts/update-context.js
+      run: |
+        echo "🤖 Starte Kontext-Update..."
+        node scripts/update-context.js
+        echo "✅ Kontext-Update abgeschlossen"
     
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v5
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        commit-message: "🤖 Automatische Kontext-Aktualisierung $(date '+%Y-%m-%d %H:%M')"
-        title: "🤖 Automatische Kontext-Aktualisierung"
-        body: |
-          ## Automatische Kontext-Aktualisierung
-          
-          Diese Aktualisierung wurde automatisch durch den GitHub Action ausgelöst.
-          
-          ### Änderungen:
-          - Aktualisierte `context.json` mit neuesten Informationen
-          - Datum: $(date '+%Y-%m-%d %H:%M')
-          
-          ### Überprüfung:
-          - [ ] Kontext-Daten sind korrekt
-          - [ ] Datum ist aktuell
-          - [ ] Events sind relevant
-          
-          **Automatischer Merge in 5 Minuten, falls keine Einwände.**
-        branch: auto-update-context
-        delete-branch: true
-        base: main 
+    - name: Check for changes
+      id: changes
+      run: |
+        if git diff --quiet HEAD context.json; then
+          echo "changed=false" >> $GITHUB_OUTPUT
+          echo "ℹ️  Keine Änderungen an context.json"
+        else
+          echo "changed=true" >> $GITHUB_OUTPUT
+          echo "📝 Änderungen an context.json erkannt"
+        fi
+    
+    - name: Commit and push changes
+      if: steps.changes.outputs.changed == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add context.json
+        git commit -m "🤖 Auto-Update: Kontext-Daten $(date '+%Y-%m-%d %H:%M')" || exit 0
+        git push
+    
+    - name: Update index.html timestamp
+      if: steps.changes.outputs.changed == 'true'
+      run: |
+        echo "🔄 Aktualisiere HTML-Timestamp..."
+        # Setze Build-Timestamp in HTML
+        sed -i "s/Letzte Aktualisierung: .*/Letzte Aktualisierung: $(date '+%d.%m.%Y %H:%M')/" index.html
+        git add index.html
+        git commit -m "📅 Update HTML timestamp" || exit 0
+        git push 
