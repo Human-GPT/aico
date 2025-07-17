@@ -37,10 +37,27 @@ jobs:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       run: node scripts/update-context.js
     
-    - name: Commit and push changes
-      run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        git add context.json
-        git diff --staged --quiet || git commit -m "🤖 Automatische Kontext-Aktualisierung $(date '+%Y-%m-%d %H:%M')"
-        git push origin main 
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: "🤖 Automatische Kontext-Aktualisierung $(date '+%Y-%m-%d %H:%M')"
+        title: "🤖 Automatische Kontext-Aktualisierung"
+        body: |
+          ## Automatische Kontext-Aktualisierung
+          
+          Diese Aktualisierung wurde automatisch durch den GitHub Action ausgelöst.
+          
+          ### Änderungen:
+          - Aktualisierte `context.json` mit neuesten Informationen
+          - Datum: $(date '+%Y-%m-%d %H:%M')
+          
+          ### Überprüfung:
+          - [ ] Kontext-Daten sind korrekt
+          - [ ] Datum ist aktuell
+          - [ ] Events sind relevant
+          
+          **Automatischer Merge in 5 Minuten, falls keine Einwände.**
+        branch: auto-update-context
+        delete-branch: true
+        base: main 
