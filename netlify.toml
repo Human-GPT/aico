@@ -10,7 +10,6 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(), location=(), payment=()"
 
 [[headers]]
   for = "*.html"
@@ -70,48 +69,6 @@
 
 [context.branch-deploy]
   command = "echo 'Branch deploy ready'"
-
-# Funktionen für erweiterte API-Features (optional)
-[functions]
-  directory = "functions"
-
-# Edge Functions (optional für bessere Performance)
-[edge_functions]
-  directory = "edge-functions"
-
-# Formulare (falls später gebraucht)
-[forms]
-  settings = {}
-
-# Notifikationen
-[notifications]
-  email = {
-    on_success = "Site deployed successfully!",
-    on_failure = "Deployment failed. Check build logs."
-  }
-
-# Plugin-Konfiguration
-[[plugins]]
-  package = "@netlify/plugin-lighthouse"
-  
-  [plugins.inputs.audits]
-    performance = true
-    accessibility = true
-    best-practices = true
-    seo = true
-    pwa = false
-
-[[plugins]]
-  package = "netlify-plugin-checklinks"
-  
-  [plugins.inputs]
-    entryPoints = [
-      "*.html",
-    ]
-    recursive = true
-    pretty = true
-    skipPatterns = []
-    todoPatterns = []
 
 # Optimierungen
 [build.processing]
