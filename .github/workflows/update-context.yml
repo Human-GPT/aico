@@ -30,7 +30,7 @@ jobs:
     
     - name: Update context data
       env:
-        GEMINI_API_KEY: ${{AIzaSyCs6gdjMGzyrT4kMYF2NDZ_F7vlGgqi43s}}
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       run: node scripts/update-context.js
     
     - name: Commit and push changes
