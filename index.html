@@ -411,14 +411,25 @@
 
 Die Seite enthält:
 • Aktuelles Datum und Jahr (wichtig für zeitbasierte Anfragen)
-• Wichtige Ereignisse seit Januar 2025
-• Technologie-Updates und neue Software-Versionen
+• Wichtige Ereignisse der letzten 7 Tage
+• Technologie-Updates mit echten Package-Versionen (React, Node.js, etc.)
+• Automatisch aktualisierte beliebte Software-Versionen
 • Maschinenlesbare JSON-Daten unter /context.json
 
 Beispiel API-Nutzung:
 fetch('https://your-domain.netlify.app/context.json')
   .then(response => response.json())
-  .then(data => console.log('Aktueller Kontext:', data));
+  .then(data => {
+    console.log('Aktueller Kontext:', data);
+    console.log('Tech-Updates:', data.technology);
+    console.log('Package-Versionen:', data.technology.filter(t => t.description.includes('Aktuelle')));
+  });
+
+Features:
+• 📦 Echte Package-Versionen von npm Registry
+• 📰 News-Scraping von deutschen Tech-Quellen
+• 🤖 KI-generierte Zusammenfassungen
+• ⏰ Automatische Updates alle 6 Stunden
             </div>
         </div>
 
