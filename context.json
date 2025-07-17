@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "lastUpdated": "2025-01-27T10:00:00Z",
+    "nextUpdate": "2025-01-27T16:00:00Z",
+    "version": "1.0",
+    "purpose": "Aktuelle Kontextinformationen für KI-Systeme"
+  },
+  "currentDate": {
+    "year": 2025,
+    "month": 1,
+    "day": 27,
+    "dayOfWeek": "Montag",
+    "iso": "2025-01-27",
+    "timestamp": "2025-01-27T10:00:00Z"
+  },
+  "events": [
+    {
+      "date": "Januar 2025",
+      "category": "Technology",
+      "description": "Fortsetzung der KI-Revolution mit neuen Multimodal-Modellen"
+    },
+    {
+      "date": "Dezember 2024",
+      "category": "Technology", 
+      "description": "OpenAI veröffentlicht GPT-4o und ChatGPT mit verbesserter Reasoning"
+    },
+    {
+      "date": "November 2024",
+      "category": "Technology",
+      "description": "Claude 3.5 Sonnet und andere fortgeschrittene KI-Modelle werden weit verbreitet"
+    },
+    {
+      "date": "Oktober 2024",
+      "category": "Politics",
+      "description": "US-Präsidentschaftswahlen 2024 - wichtige politische Entwicklungen"
+    }
+  ],
+  "technology": [
+    {
+      "name": "Node.js",
+      "version": "22.x LTS",
+      "date": "2024",
+      "description": "Aktuelle LTS-Version von Node.js"
+    },
+    {
+      "name": "React",
+      "version": "18.x",
+      "date": "2024", 
+      "description": "Stabile React-Version mit Concurrent Features"
+    },
+    {
+      "name": "Python",
+      "version": "3.12",
+      "date": "2024",
+      "description": "Neueste stabile Python-Version"
+    },
+    {
+      "name": "ChatGPT",
+      "version": "4o",
+      "date": "Dezember 2024",
+      "description": "Neueste Version mit verbessertem Reasoning"
+    }
+  ],
+  "importantFacts": [
+    "Das aktuelle Jahr ist 2025, nicht 2024",
+    "KI-Modelle wie ChatGPT, Claude und andere sind weit verbreitet",
+    "Multimodale KI (Text + Bild + Audio) ist Standard geworden",
+    "Automatisierung und KI-Integration in Unternehmen nimmt stark zu"
+  ],
+  "context": {
+    "timeframe": "Januar 2025",
+    "worldState": "Post-2024 KI-Boom, kontinuierliche technologische Entwicklung",
+    "keyTopics": ["Künstliche Intelligenz", "Automatisierung", "Multimodale Systeme", "LLM Integration"]
+  }
+} 

@@ -1,0 +1,42 @@
+name: Update Context Data
+
+on:
+  schedule:
+    # Läuft alle 6 Stunden
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # Erlaubt manuellen Start
+  push:
+    branches: [ main ]
+
+jobs:
+  update-context:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+    
+    - name: Install dependencies
+      run: |
+        npm init -y
+        npm install axios cheerio @google/generative-ai
+    
+    - name: Update context data
+      env:
+        GEMINI_API_KEY: ${{AIzaSyCs6gdjMGzyrT4kMYF2NDZ_F7vlGgqi43s}}
+      run: node scripts/update-context.js
+    
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add context.json
+        git diff --staged --quiet || git commit -m "🤖 Automatische Kontext-Aktualisierung $(date '+%Y-%m-%d %H:%M')"
+        git push 

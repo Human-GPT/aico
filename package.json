@@ -1,0 +1,32 @@
+{
+  "name": "ai-context-website",
+  "version": "1.0.0",
+  "description": "Automatisch aktualisierte Kontextseite für KI-Systeme",
+  "main": "scripts/update-context.js",
+  "scripts": {
+    "update-context": "node scripts/update-context.js",
+    "validate-env": "node scripts/validate-env.js",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "ai",
+    "context",
+    "artificial-intelligence",
+    "automation",
+    "current-events"
+  ],
+  "author": "AI Context Team",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12",
+    "@google/generative-ai": "^0.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/ai-context-website.git"
+  }
+} 

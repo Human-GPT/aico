@@ -1,0 +1,36 @@
+[build]
+  publish = "."
+  command = "echo 'Static site - no build needed'"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/context.json"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Content-Type = "application/json"
+    Cache-Control = "public, max-age=21600" # 6 Stunden Cache
+
+[[headers]]
+  for = "*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600" # 1 Stunde Cache
+
+[[redirects]]
+  from = "/api/context"
+  to = "/context.json"
+  status = 200
+
+[[redirects]]
+  from = "/context"
+  to = "/context.json"
+  status = 200 

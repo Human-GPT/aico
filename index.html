@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aktueller Kontext für KI-Systeme</title>
+    <meta name="description" content="Aktuelle Kontextinformationen für KI-Modelle - automatisch aktualisiert">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .context-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            border-radius: 5px;
+        }
+        .context-section h2 {
+            color: #2980b9;
+            margin-top: 0;
+        }
+        .date-info {
+            background: #e8f5e8;
+            border-left-color: #27ae60;
+            font-size: 1.1em;
+        }
+        .important-events {
+            background: #fff3cd;
+            border-left-color: #ffc107;
+        }
+        .technology {
+            background: #e7f3ff;
+            border-left-color: #007bff;
+        }
+        .json-link {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .json-link:hover {
+            background: #218838;
+        }
+        .last-updated {
+            color: #666;
+            font-style: italic;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .usage-example {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 Aktueller Kontext für KI-Systeme</h1>
+        
+        <div class="context-section date-info">
+            <h2>📅 Aktuelles Datum & Zeit</h2>
+            <p><strong>Datum:</strong> <span id="current-date">Wird geladen...</span></p>
+            <p><strong>Jahr:</strong> <span id="current-year">Wird geladen...</span></p>
+            <p><strong>Wochentag:</strong> <span id="current-day">Wird geladen...</span></p>
+            <p><strong>UTC Time:</strong> <span id="current-utc">Wird geladen...</span></p>
+        </div>
+
+        <div class="context-section important-events">
+            <h2>🌍 Wichtige aktuelle Ereignisse</h2>
+            <div id="events-content">
+                <p>Daten werden geladen...</p>
+            </div>
+        </div>
+
+        <div class="context-section technology">
+            <h2>💻 Technologie & Software Updates</h2>
+            <div id="tech-content">
+                <p>Daten werden geladen...</p>
+            </div>
+        </div>
+
+        <div class="context-section">
+            <h2>🔗 Maschinenlesbare Daten</h2>
+            <p>Für KI-Systeme und APIs:</p>
+            <a href="./context.json" class="json-link">📄 JSON Kontext-Daten</a>
+            
+            <h3>Verwendungsbeispiel:</h3>
+            <div class="usage-example">Kontext: Aktuelle Informationen findest du auf https://deine-domain.netlify.app
+
+Die Seite enthält:
+- Aktuelles Datum und Jahr (wichtig für zeitbasierte Anfragen)
+- Wichtige Ereignisse der letzten Monate
+- Technologie-Updates und neue Software-Versionen
+- Maschinenlesbare JSON-Daten unter /context.json</div>
+        </div>
+
+        <div class="last-updated">
+            Letzte Aktualisierung: <span id="last-update">Wird geladen...</span>
+        </div>
+    </div>
+
+    <script>
+        // Aktuelles Datum und Zeit anzeigen
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                weekday: 'long'
+            };
+            
+            document.getElementById('current-date').textContent = now.toLocaleDateString('de-DE', options);
+            document.getElementById('current-year').textContent = now.getFullYear();
+            document.getElementById('current-day').textContent = now.toLocaleDateString('de-DE', { weekday: 'long' });
+            document.getElementById('current-utc').textContent = now.toISOString();
+            document.getElementById('last-update').textContent = now.toLocaleString('de-DE');
+        }
+
+        // Kontext-Daten laden
+        async function loadContextData() {
+            try {
+                const response = await fetch('./context.json');
+                const data = await response.json();
+                
+                // Events anzeigen
+                const eventsDiv = document.getElementById('events-content');
+                eventsDiv.innerHTML = data.events.map(event => 
+                    `<p><strong>${event.date}:</strong> ${event.description}</p>`
+                ).join('');
+                
+                // Tech Updates anzeigen
+                const techDiv = document.getElementById('tech-content');
+                techDiv.innerHTML = data.technology.map(tech => 
+                    `<p><strong>${tech.name}:</strong> ${tech.version} (${tech.date})</p>`
+                ).join('');
+                
+            } catch (error) {
+                console.error('Fehler beim Laden der Kontext-Daten:', error);
+            }
+        }
+
+        // Beim Laden der Seite ausführen
+        updateDateTime();
+        loadContextData();
+        
+        // Datum jede Minute aktualisieren
+        setInterval(updateDateTime, 60000);
+    </script>
+</body>
+</html> 
