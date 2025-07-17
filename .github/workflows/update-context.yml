@@ -32,6 +32,15 @@ jobs:
         npm init -y
         npm install axios cheerio @google/generative-ai
     
+    - name: Validate API Key
+      run: |
+        if [ -z "${{ secrets.GEMINI_API_KEY }}" ]; then
+          echo "❌ GEMINI_API_KEY ist nicht gesetzt!"
+          exit 1
+        else
+          echo "✅ GEMINI_API_KEY ist verfügbar"
+        fi
+    
     - name: Update context data
       env:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
