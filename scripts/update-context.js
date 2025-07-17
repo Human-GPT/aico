@@ -21,7 +21,7 @@ const axiosConfig = {
     maxRedirects: 5
 };
 
-// News-Quellen für aktuelle Ereignisse
+// News-Quellen für aktuelle Ereignisse (deutsche Hauptnachrichten)
 const NEWS_SOURCES = [
     'https://www.tagesschau.de/',
     'https://www.spiegel.de/',
@@ -30,7 +30,11 @@ const NEWS_SOURCES = [
     'https://www.sueddeutsche.de/',
     'https://www.welt.de/',
     'https://www.handelsblatt.com/',
-    'https://www.wiwo.de/'
+    'https://www.wiwo.de/',
+    'https://www.n-tv.de/',
+    'https://www.focus.de/',
+    'https://www.stern.de/',
+    'https://www.bild.de/'
 ];
 
 const TECH_SOURCES = [
@@ -54,17 +58,34 @@ async function fetchWebContent(url) {
 }
 
 async function extractNewsFromContent(htmlContent, sourceName) {
-    if (!htmlContent) return [];
+    if (!htmlContent) return null;
     
     try {
-        // Einfache Text-Extraktion (ohne HTML-Tags)
-        const textContent = htmlContent
+        // Verbesserte Text-Extraktion mit Fokus auf News-Inhalte
+        let textContent = htmlContent
             .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
             .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+            .replace(/<nav[^>]*>[\s\S]*?<\/nav>/gi, '')
+            .replace(/<header[^>]*>[\s\S]*?<\/header>/gi, '')
+            .replace(/<footer[^>]*>[\s\S]*?<\/footer>/gi, '')
+            .replace(/<aside[^>]*>[\s\S]*?<\/aside>/gi, '')
             .replace(/<[^>]+>/g, ' ')
             .replace(/\s+/g, ' ')
-            .trim()
-            .substring(0, 5000); // Begrenze auf 5000 Zeichen
+            .trim();
+        
+        // Fokus auf relevante News-Inhalte (erste 8000 Zeichen)
+        textContent = textContent.substring(0, 8000);
+        
+        // Filtere nur Inhalte mit News-Keywords
+        const newsKeywords = ['news', 'nachrichten', 'bericht', 'meldung', 'update', 'breaking', 'aktuell', 'heute', 'gestern', 'woche'];
+        const hasNewsContent = newsKeywords.some(keyword => 
+            textContent.toLowerCase().includes(keyword)
+        );
+        
+        if (!hasNewsContent && textContent.length < 500) {
+            console.log(`⚠️  ${sourceName}: Keine relevanten News-Inhalte gefunden`);
+            return null;
+        }
         
         return {
             source: sourceName,
@@ -81,7 +102,7 @@ async function getCurrentEvents() {
     const model = genAI.getGenerativeModel({ 
         model: "gemini-2.5-flash",
         generationConfig: {
-            temperature: 0.3,
+            temperature: 0.2,
             topK: 40,
             topP: 0.95,
             maxOutputTokens: 2048,
@@ -91,7 +112,7 @@ async function getCurrentEvents() {
     const currentDate = new Date();
     const oneWeekAgo = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000);
     
-    console.log('📰 Sammle aktuelle News der letzten Woche...');
+    console.log('📰 Sammle ECHTE aktuelle News der letzten Tage...');
     
     // Sammle News von verschiedenen Quellen
     const newsPromises = NEWS_SOURCES.map(async (url) => {
@@ -103,40 +124,48 @@ async function getCurrentEvents() {
     const validNews = newsResults
         .filter(result => result.status === 'fulfilled' && result.value)
         .map(result => result.value)
-        .slice(0, 5); // Verwende maximal 5 Quellen
+        .slice(0, 8); // Verwende maximal 8 Quellen für bessere Abdeckung
     
     console.log(`✅ ${validNews.length} News-Quellen erfolgreich abgerufen`);
     
     // Erstelle einen kontextuellen Prompt mit echten News
     const newsContext = validNews.length > 0 
-        ? `\n\nKontext aus aktuellen News-Quellen:\n${validNews.map(n => `${n.source}: ${n.content.substring(0, 200)}...`).join('\n')}`
+        ? `\n\nECHTE AKTUELLE NEWS (nur diese verwenden!):\n${validNews.map(n => `${n.source}: ${n.content.substring(0, 300)}...`).join('\n\n')}`
         : '';
     
-    const prompt = `Du bist ein Nachrichten-Analyst. Erstelle eine JSON-Liste der 8 wichtigsten aktuellen Ereignisse der letzten Woche (${oneWeekAgo.toLocaleDateString('de-DE')} bis ${currentDate.toLocaleDateString('de-DE')}).
+    const prompt = `Du bist ein Nachrichten-Analyst. Analysiere die bereitgestellten ECHTEN News und erstelle eine JSON-Liste der wichtigsten aktuellen Ereignisse.
 
-Fokus auf ECHTE, AKTUELLE Ereignisse:
+WICHTIG: 
+- Verwende NUR die bereitgestellten echten News-Quellen
+- Keine erfundenen oder zukünftigen Ereignisse
+- Nur ECHTE, VERIFIZIERBARE Ereignisse der letzten Tage
+- Stichpunkte statt Chat-Format für bessere KI-Lesbarkeit
+
+Fokus auf:
 - Politik (Wahlen, Gesetze, internationale Beziehungen, Krisen)
-- Wirtschaft (Unternehmensnews, Börse, Fusionen, Insolvenzen)
+- Wirtschaft (Unternehmensnews, Börse, Fusionen, Insolvenzen) 
 - Technologie (KI-Durchbrüche, Software-Releases, Cyberangriffe)
 - Gesellschaft (Wichtige kulturelle/sportliche Ereignisse, Skandale)
 - Wissenschaft (Medizinische Durchbrüche, Forschungsergebnisse)
 
-WICHTIG: Verwende nur ECHTE, VERIFIZIERBARE Ereignisse der letzten 7 Tage!
 ${newsContext}
 
-Format (exakt):
+Format (exakt, für andere KIs optimiert):
 [
   {
-    "date": "27.01.2025",
-    "category": "Technologie",
-    "description": "Kurze, präzise Beschreibung des ECHTEN Ereignisses",
-    "source": "Quelle (optional)"
+    "date": "17.07.2025",
+    "category": "Technologie", 
+    "description": "Kurzer, präziser Stichpunkt des ECHTEN Ereignisses",
+    "source": "Quelle"
   }
 ]
 
-Aktuelles Datum: ${currentDate.toLocaleDateString('de-DE')}
-Zeitraum: Letzte 7 Tage
-Antworte NUR mit dem JSON Array.`;
+Regeln:
+- Nur ECHTE News aus den bereitgestellten Quellen
+- Stichpunkte statt ausführliche Beschreibungen
+- Für andere KIs leicht lesbar
+- Aktuelles Datum: ${currentDate.toLocaleDateString('de-DE')}
+- Antworte NUR mit dem JSON Array`;
 
     try {
         console.log('🤖 Generiere aktuelle Ereignisse mit Gemini AI...');
@@ -157,14 +186,25 @@ Antworte NUR mit dem JSON Array.`;
         return events.slice(0, 8);
     } catch (error) {
         console.error('❌ Fehler beim Generieren der Ereignisse:', error.message);
-        return [
+        
+        // Bessere Fallback-Ereignisse basierend auf aktuellen Trends
+        const fallbackEvents = [
             { 
                 date: currentDate.toLocaleDateString('de-DE'), 
                 category: "System", 
-                description: "Automatische Updates funktionieren",
+                description: "AICO Kontext-System läuft automatisch",
+                source: "AICO"
+            },
+            {
+                date: currentDate.toLocaleDateString('de-DE'),
+                category: "Technologie",
+                description: "KI-Systeme werden kontinuierlich verbessert",
                 source: "AICO"
             }
         ];
+        
+        console.log('⚠️  Verwende Fallback-Ereignisse');
+        return fallbackEvents;
     }
 }
 
