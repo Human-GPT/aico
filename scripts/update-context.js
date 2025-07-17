@@ -21,23 +21,59 @@ const axiosConfig = {
     maxRedirects: 5
 };
 
-async function safeJsonParse(text, fallback = []) {
+// News-Quellen für aktuelle Ereignisse
+const NEWS_SOURCES = [
+    'https://www.tagesschau.de/',
+    'https://www.spiegel.de/',
+    'https://www.zeit.de/',
+    'https://www.faz.net/',
+    'https://www.sueddeutsche.de/',
+    'https://www.welt.de/',
+    'https://www.handelsblatt.com/',
+    'https://www.wiwo.de/'
+];
+
+const TECH_SOURCES = [
+    'https://www.heise.de/news/',
+    'https://www.golem.de/',
+    'https://www.techcrunch.com/',
+    'https://www.theverge.com/',
+    'https://www.engadget.com/',
+    'https://www.zdnet.com/'
+];
+
+async function fetchWebContent(url) {
     try {
-        // Bereinige Text von Markdown-Formatierung
-        let cleanText = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
-        
-        // Finde JSON Array oder Object
-        const jsonMatch = cleanText.match(/(\[[\s\S]*?\]|\{[\s\S]*?\})/);
-        if (jsonMatch) {
-            const parsed = JSON.parse(jsonMatch[1]);
-            return Array.isArray(parsed) ? parsed : [parsed];
-        }
-        
-        console.warn('⚠️  Kein valides JSON gefunden, verwende Fallback');
-        return fallback;
+        console.log(`📡 Fetching: ${url}`);
+        const response = await axios.get(url, axiosConfig);
+        return response.data;
     } catch (error) {
-        console.error('❌ JSON Parse Fehler:', error.message);
-        return fallback;
+        console.error(`❌ Error fetching ${url}:`, error.message);
+        return null;
+    }
+}
+
+async function extractNewsFromContent(htmlContent, sourceName) {
+    if (!htmlContent) return [];
+    
+    try {
+        // Einfache Text-Extraktion (ohne HTML-Tags)
+        const textContent = htmlContent
+            .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+            .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+            .replace(/<[^>]+>/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim()
+            .substring(0, 5000); // Begrenze auf 5000 Zeichen
+        
+        return {
+            source: sourceName,
+            content: textContent,
+            timestamp: new Date().toISOString()
+        };
+    } catch (error) {
+        console.error(`❌ Error extracting content from ${sourceName}:`, error.message);
+        return null;
     }
 }
 
@@ -52,45 +88,82 @@ async function getCurrentEvents() {
         }
     });
     
-    const currentDate = new Date().toISOString().split('T')[0];
+    const currentDate = new Date();
+    const oneWeekAgo = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000);
     
-    const prompt = `Du bist ein Informations-Assistent. Erstelle eine JSON-Liste der 8 wichtigsten Ereignisse seit Januar 2025.
+    console.log('📰 Sammle aktuelle News der letzten Woche...');
+    
+    // Sammle News von verschiedenen Quellen
+    const newsPromises = NEWS_SOURCES.map(async (url) => {
+        const content = await fetchWebContent(url);
+        return extractNewsFromContent(content, new URL(url).hostname);
+    });
+    
+    const newsResults = await Promise.allSettled(newsPromises);
+    const validNews = newsResults
+        .filter(result => result.status === 'fulfilled' && result.value)
+        .map(result => result.value)
+        .slice(0, 5); // Verwende maximal 5 Quellen
+    
+    console.log(`✅ ${validNews.length} News-Quellen erfolgreich abgerufen`);
+    
+    // Erstelle einen kontextuellen Prompt mit echten News
+    const newsContext = validNews.length > 0 
+        ? `\n\nKontext aus aktuellen News-Quellen:\n${validNews.map(n => `${n.source}: ${n.content.substring(0, 200)}...`).join('\n')}`
+        : '';
+    
+    const prompt = `Du bist ein Nachrichten-Analyst. Erstelle eine JSON-Liste der 8 wichtigsten aktuellen Ereignisse der letzten Woche (${oneWeekAgo.toLocaleDateString('de-DE')} bis ${currentDate.toLocaleDateString('de-DE')}).
 
-Fokus auf:
-- Politik (Wahlen, Gesetze, internationale Beziehungen)
-- Technologie (KI, Software, Hardware-Releases)
-- Wirtschaft (Unternehmensnews, Märkte, Fusionen)
-- Gesellschaft (kulturelle/soziale Entwicklungen)
+Fokus auf ECHTE, AKTUELLE Ereignisse:
+- Politik (Wahlen, Gesetze, internationale Beziehungen, Krisen)
+- Wirtschaft (Unternehmensnews, Börse, Fusionen, Insolvenzen)
+- Technologie (KI-Durchbrüche, Software-Releases, Cyberangriffe)
+- Gesellschaft (Wichtige kulturelle/sportliche Ereignisse, Skandale)
+- Wissenschaft (Medizinische Durchbrüche, Forschungsergebnisse)
+
+WICHTIG: Verwende nur ECHTE, VERIFIZIERBARE Ereignisse der letzten 7 Tage!
+${newsContext}
 
 Format (exakt):
 [
   {
-    "date": "Januar 2025",
+    "date": "27.01.2025",
     "category": "Technologie",
-    "description": "Kurze Beschreibung des Ereignisses"
+    "description": "Kurze, präzise Beschreibung des ECHTEN Ereignisses",
+    "source": "Quelle (optional)"
   }
 ]
 
-Aktuelles Datum: ${currentDate}
+Aktuelles Datum: ${currentDate.toLocaleDateString('de-DE')}
+Zeitraum: Letzte 7 Tage
 Antworte NUR mit dem JSON Array.`;
 
     try {
-        console.log('📰 Generiere aktuelle Ereignisse...');
+        console.log('🤖 Generiere aktuelle Ereignisse mit Gemini AI...');
         const result = await model.generateContent(prompt);
         const response = await result.response;
         const text = response.text();
         
         const events = await safeJsonParse(text, [
-            { date: "Januar 2025", category: "Technologie", description: "KI-Entwicklung schreitet voran" },
-            { date: "Januar 2025", category: "Politik", description: "Internationale Zusammenarbeit stärkt sich" }
+            { 
+                date: currentDate.toLocaleDateString('de-DE'), 
+                category: "System", 
+                description: "AICO System erfolgreich aktualisiert",
+                source: "AICO"
+            }
         ]);
         
-        console.log(`✅ ${events.length} Ereignisse generiert`);
+        console.log(`✅ ${events.length} aktuelle Ereignisse generiert`);
         return events.slice(0, 8);
     } catch (error) {
         console.error('❌ Fehler beim Generieren der Ereignisse:', error.message);
         return [
-            { date: "Januar 2025", category: "System", description: "Automatische Updates funktionieren" }
+            { 
+                date: currentDate.toLocaleDateString('de-DE'), 
+                category: "System", 
+                description: "Automatische Updates funktionieren",
+                source: "AICO"
+            }
         ];
     }
 }
@@ -104,39 +177,66 @@ async function getCurrentTechInfo() {
         }
     });
     
-    const currentDate = new Date().toISOString().split('T')[0];
+    const currentDate = new Date();
     
-    const prompt = `Du bist ein Tech-Experte. Erstelle eine JSON-Liste der 10 wichtigsten Software-Versionen von 2025.
+    console.log('💻 Sammle aktuelle Tech-News...');
+    
+    // Sammle Tech-News
+    const techPromises = TECH_SOURCES.map(async (url) => {
+        const content = await fetchWebContent(url);
+        return extractNewsFromContent(content, new URL(url).hostname);
+    });
+    
+    const techResults = await Promise.allSettled(techPromises);
+    const validTech = techResults
+        .filter(result => result.status === 'fulfilled' && result.value)
+        .map(result => result.value)
+        .slice(0, 3);
+    
+    console.log(`✅ ${validTech.length} Tech-Quellen erfolgreich abgerufen`);
+    
+    const techContext = validTech.length > 0 
+        ? `\n\nKontext aus Tech-News:\n${validTech.map(t => `${t.source}: ${t.content.substring(0, 200)}...`).join('\n')}`
+        : '';
+    
+    const prompt = `Du bist ein Tech-Experte. Erstelle eine JSON-Liste der 10 wichtigsten Software/Technologie-Updates der letzten Woche.
 
-Berücksichtige:
-- Node.js, Python, React, Vue.js, Angular aktuelle Versionen
-- Browser (Chrome, Firefox, Safari, Edge)
+Berücksichtige AKTUELLE Releases und Updates:
+- Node.js, Python, React, Vue.js, Angular neue Versionen
+- Browser-Updates (Chrome, Firefox, Safari, Edge)
 - KI-Modelle (ChatGPT, Claude, Gemini, etc.)
 - Wichtige Framework-Updates
 - Mobile Betriebssysteme (iOS, Android)
+- Sicherheits-Updates und Patches
+${techContext}
 
 Format (exakt):
 [
   {
-    "name": "Software Name",
+    "name": "Software/Tool Name",
     "version": "Version Nummer",
-    "date": "Monat 2025",
-    "description": "Wichtigste Neuerung"
+    "date": "DD.MM.YYYY",
+    "description": "Wichtigste Neuerung/Feature"
   }
 ]
 
-Aktuelles Datum: ${currentDate}
+Aktuelles Datum: ${currentDate.toLocaleDateString('de-DE')}
+Zeitraum: Letzte 7 Tage
 Antworte NUR mit dem JSON Array.`;
 
     try {
-        console.log('💻 Generiere Tech-Informationen...');
+        console.log('🤖 Generiere Tech-Updates mit Gemini AI...');
         const result = await model.generateContent(prompt);
         const response = await result.response;
         const text = response.text();
         
         const technology = await safeJsonParse(text, [
-            { name: "Node.js", version: "22.x", date: "Januar 2025", description: "Neue LTS Version" },
-            { name: "React", version: "19.x", date: "Januar 2025", description: "Performance-Verbesserungen" }
+            { 
+                name: "AICO System", 
+                version: "2.0", 
+                date: currentDate.toLocaleDateString('de-DE'), 
+                description: "Verbesserte News-Integration" 
+            }
         ]);
         
         console.log(`✅ ${technology.length} Tech-Updates generiert`);
@@ -144,7 +244,12 @@ Antworte NUR mit dem JSON Array.`;
     } catch (error) {
         console.error('❌ Fehler beim Generieren der Tech-Infos:', error.message);
         return [
-            { name: "JavaScript", version: "ES2025", date: "Januar 2025", description: "Sprachweiterentwicklung" }
+            { 
+                name: "AICO", 
+                version: "2.0", 
+                date: currentDate.toLocaleDateString('de-DE'), 
+                description: "Aktuelle News-Integration" 
+            }
         ];
     }
 }
@@ -159,13 +264,14 @@ async function generateImportantFacts() {
     });
     
     const currentDate = new Date();
-    const prompt = `Du bist ein KI-Trainer. Erstelle eine JSON-Liste der 6 wichtigsten Fakten für KI-Systeme über 2025.
+    const prompt = `Du bist ein KI-Trainer. Erstelle eine JSON-Liste der 6 wichtigsten Fakten für KI-Systeme über die aktuelle Zeit (2025).
 
 Fokus auf grundlegende Orientierung:
 - Aktuelles Jahr (2025, nicht 2024!)
 - Wichtige technologische Standards 
 - Verbreitete Tools und Plattformen
 - Gesellschaftliche Entwicklungen seit 2024
+- Aktuelle politische/wirtschaftliche Situation
 
 Format (exakt):
 [
@@ -200,6 +306,26 @@ Antworte NUR mit dem JSON Array.`;
     }
 }
 
+async function safeJsonParse(text, fallback = []) {
+    try {
+        // Bereinige Text von Markdown-Formatierung
+        let cleanText = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+        
+        // Finde JSON Array oder Object
+        const jsonMatch = cleanText.match(/(\[[\s\S]*?\]|\{[\s\S]*?\})/);
+        if (jsonMatch) {
+            const parsed = JSON.parse(jsonMatch[1]);
+            return Array.isArray(parsed) ? parsed : [parsed];
+        }
+        
+        console.warn('⚠️  Kein valides JSON gefunden, verwende Fallback');
+        return fallback;
+    } catch (error) {
+        console.error('❌ JSON Parse Fehler:', error.message);
+        return fallback;
+    }
+}
+
 async function updateContextData() {
     console.log('🤖 === AICO Kontext-Update gestartet ===');
     const startTime = Date.now();
@@ -219,14 +345,16 @@ async function updateContextData() {
             meta: {
                 lastUpdated: now.toISOString(),
                 nextUpdate: new Date(now.getTime() + 6 * 60 * 60 * 1000).toISOString(),
-                version: "2.0",
+                version: "2.1",
                 purpose: "Aktuelle Kontextinformationen für KI-Systeme",
-                source: "Automatisch generiert via Gemini AI",
+                source: "Automatisch generiert via Gemini AI + News-Scraping",
                 dataQuality: {
-                    events: events.length > 0 ? "good" : "fallback",
-                    technology: technology.length > 0 ? "good" : "fallback", 
-                    facts: importantFacts.length > 0 ? "good" : "fallback"
-                }
+                    events: events.length > 1 ? "good" : "fallback",
+                    technology: technology.length > 1 ? "good" : "fallback", 
+                    facts: importantFacts.length > 1 ? "good" : "fallback"
+                },
+                newsSources: NEWS_SOURCES.length,
+                techSources: TECH_SOURCES.length
             },
             currentDate: {
                 year: now.getFullYear(),
@@ -237,7 +365,8 @@ async function updateContextData() {
                 monthName: now.toLocaleDateString('de-DE', { month: 'long' }),
                 iso: now.toISOString().split('T')[0],
                 timestamp: now.toISOString(),
-                timezone: 'UTC'
+                timezone: 'UTC',
+                weekOfYear: Math.ceil((now.getTime() - new Date(now.getFullYear(), 0, 1).getTime()) / (7 * 24 * 60 * 60 * 1000))
             },
             events: events,
             technology: technology,
@@ -246,13 +375,17 @@ async function updateContextData() {
                 timeframe: `${now.toLocaleDateString('de-DE', { month: 'long' })} ${now.getFullYear()}`,
                 worldState: "Post-2024 KI-Boom, kontinuierliche technologische Entwicklung",
                 keyTopics: ["Künstliche Intelligenz", "Automatisierung", "Multimodale Systeme", "LLM Integration"],
-                lastMajorUpdate: now.toISOString().split('T')[0]
+                lastMajorUpdate: now.toISOString().split('T')[0],
+                newsCoverage: "Letzte 7 Tage",
+                updateFrequency: "Alle 6 Stunden"
             },
             statistics: {
                 eventsCount: events.length,
                 technologyCount: technology.length,
                 factsCount: importantFacts.length,
-                generationTimeMs: Date.now() - startTime
+                generationTimeMs: Date.now() - startTime,
+                newsSourcesQueried: NEWS_SOURCES.length,
+                techSourcesQueried: TECH_SOURCES.length
             }
         };
         
@@ -276,11 +409,12 @@ async function updateContextData() {
         
         console.log('✅ === AICO Kontext-Update erfolgreich ===');
         console.log(`📅 Datum: ${contextData.currentDate.iso} (${contextData.currentDate.dayOfWeek})`);
-        console.log(`📰 Events: ${events.length}`);
+        console.log(`📰 Events: ${events.length} (letzte Woche)`);
         console.log(`💻 Tech-Updates: ${technology.length}`);
         console.log(`💡 Fakten: ${importantFacts.length}`);
         console.log(`⏱️  Dauer: ${Date.now() - startTime}ms`);
         console.log(`🔗 JSON: ${fs.statSync(contextPath).size} Bytes`);
+        console.log(`📡 News-Quellen: ${NEWS_SOURCES.length}, Tech-Quellen: ${TECH_SOURCES.length}`);
         
         // Cleanup Backup bei Erfolg
         if (fs.existsSync(backupPath)) {
