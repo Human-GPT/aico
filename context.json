@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-17T15:19:53.539Z",
-    "nextUpdate": "2025-07-17T21:19:53.539Z",
+    "lastUpdated": "2025-07-17T15:29:47.600Z",
+    "nextUpdate": "2025-07-17T21:29:47.600Z",
     "version": "2.1",
     "purpose": "Aktuelle Kontextinformationen für KI-Systeme",
     "source": "Automatisch generiert via Gemini AI + News-Scraping",
@@ -21,7 +21,7 @@
     "dayOfWeek": "Donnerstag",
     "monthName": "Juli",
     "iso": "2025-07-17",
-    "timestamp": "2025-07-17T15:19:53.539Z",
+    "timestamp": "2025-07-17T15:29:47.600Z",
     "timezone": "UTC",
     "weekOfYear": 29
   },
@@ -62,7 +62,7 @@
     "eventsCount": 1,
     "technologyCount": 1,
     "factsCount": 2,
-    "generationTimeMs": 2097,
+    "generationTimeMs": 2453,
     "newsSourcesQueried": 8,
     "techSourcesQueried": 6
   }

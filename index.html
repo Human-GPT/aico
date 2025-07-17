@@ -467,8 +467,10 @@ fetch('https://your-domain.netlify.app/context.json')
         // Kontext-Daten laden und anzeigen
         async function loadContextData() {
             try {
+                console.log('🔄 Lade Kontext-Daten...');
                 const response = await fetch('./context.json');
                 contextData = await response.json();
+                console.log('✅ Kontext-Daten geladen:', contextData);
                 
                 // Status-Updates
                 document.getElementById('events-count').textContent = contextData.events?.length || 0;
@@ -476,9 +478,12 @@ fetch('https://your-domain.netlify.app/context.json')
                 document.getElementById('facts-count').textContent = contextData.importantFacts?.length || 0;
                 document.getElementById('news-sources').textContent = contextData.meta?.newsSources || 0;
                 
+                console.log(`📊 Events: ${contextData.events?.length}, Tech: ${contextData.technology?.length}, Facts: ${contextData.importantFacts?.length}`);
+                
                 // Events anzeigen
                 const eventsDiv = document.getElementById('events-content');
                 if (contextData.events && contextData.events.length > 0) {
+                    console.log('📰 Zeige Events an:', contextData.events);
                     eventsDiv.innerHTML = contextData.events.map(event => 
                         `<div class="data-item">
                             <strong>${event.category}:</strong>
@@ -488,6 +493,7 @@ fetch('https://your-domain.netlify.app/context.json')
                     ).join('');
                     setQualityIndicator('events-quality', contextData.meta?.dataQuality?.events || 'good');
                 } else {
+                    console.log('⚠️ Keine Events gefunden');
                     eventsDiv.innerHTML = '<p style="color: var(--text-secondary);">Keine aktuellen Ereignisse verfügbar</p>';
                     setQualityIndicator('events-quality', 'fallback');
                 }
@@ -495,6 +501,7 @@ fetch('https://your-domain.netlify.app/context.json')
                 // Tech Updates anzeigen
                 const techDiv = document.getElementById('tech-content');
                 if (contextData.technology && contextData.technology.length > 0) {
+                    console.log('💻 Zeige Tech-Updates an:', contextData.technology);
                     techDiv.innerHTML = contextData.technology.map(tech => 
                         `<div class="data-item">
                             <strong>${tech.name}:</strong>
@@ -504,6 +511,7 @@ fetch('https://your-domain.netlify.app/context.json')
                     ).join('');
                     setQualityIndicator('tech-quality', contextData.meta?.dataQuality?.technology || 'good');
                 } else {
+                    console.log('⚠️ Keine Tech-Updates gefunden');
                     techDiv.innerHTML = '<p style="color: var(--text-secondary);">Keine Tech-Updates verfügbar</p>';
                     setQualityIndicator('tech-quality', 'fallback');
                 }
@@ -511,11 +519,13 @@ fetch('https://your-domain.netlify.app/context.json')
                 // Wichtige Fakten anzeigen
                 const factsDiv = document.getElementById('facts-content');
                 if (contextData.importantFacts && contextData.importantFacts.length > 0) {
+                    console.log('💡 Zeige Fakten an:', contextData.importantFacts);
                     factsDiv.innerHTML = contextData.importantFacts.map(fact => 
                         `<div class="fact-item">${fact}</div>`
                     ).join('');
                     setQualityIndicator('facts-quality', contextData.meta?.dataQuality?.facts || 'good');
                 } else {
+                    console.log('⚠️ Keine Fakten gefunden');
                     factsDiv.innerHTML = '<p style="color: var(--text-secondary);">Keine wichtigen Fakten verfügbar</p>';
                     setQualityIndicator('facts-quality', 'fallback');
                 }
@@ -545,8 +555,10 @@ fetch('https://your-domain.netlify.app/context.json')
                     document.querySelector('.footer').appendChild(coverageInfo);
                 }
                 
+                console.log('✅ Alle Daten erfolgreich angezeigt');
+                
             } catch (error) {
-                console.error('Fehler beim Laden der Kontext-Daten:', error);
+                console.error('❌ Fehler beim Laden der Kontext-Daten:', error);
                 
                 // Fallback-Anzeige
                 ['events-content', 'tech-content', 'facts-content'].forEach(id => {
