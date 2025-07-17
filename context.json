@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-17T16:25:30.163Z",
-    "nextUpdate": "2025-07-17T22:25:30.163Z",
+    "lastUpdated": "2025-07-17T18:57:38.486Z",
+    "nextUpdate": "2025-07-18T00:57:38.486Z",
     "version": "2.2",
     "purpose": "Aktuelle Kontextinformationen für KI-Systeme",
     "source": "Automatisch generiert via Gemini AI + News-Scraping",
@@ -21,16 +21,16 @@
     "dayOfWeek": "Donnerstag",
     "monthName": "Juli",
     "iso": "2025-07-17",
-    "timestamp": "2025-07-17T16:25:30.163Z",
+    "timestamp": "2025-07-17T18:57:38.486Z",
     "timezone": "UTC",
     "weekOfYear": 29
   },
   "events": [
     {
-      "date": "17.7.2025",
-      "category": "System",
-      "description": "AICO System erfolgreich aktualisiert",
-      "source": "AICO"
+      "date": "17.07.2025",
+      "category": "Gesellschaft",
+      "description": "Bamberger Erzbischof Gössl nimmt Kritik an Brosius-Gersdorf zurück.",
+      "source": "tagesschau.de"
     }
   ],
   "technology": [
@@ -83,28 +83,28 @@
       "description": "Build Tool - Aktuelle stabile Version"
     },
     {
+      "name": "OpenAI ChatGPT",
+      "version": "N/A (Agent-Funktion)",
+      "date": "17.07.2025",
+      "description": "Einführung eines allgemeinen KI-Agenten zur Automatisierung komplexer Aufgaben und Interaktionen über verschiedene Anwendungen hinweg."
+    },
+    {
       "name": "Google Chrome",
-      "version": "128.0.6543.12",
-      "date": "16.07.2025",
-      "description": "Wichtige Sicherheitsupdates zur Behebung mehrerer kritischer Schwachstellen und Leistungsverbesserungen."
-    },
-    {
-      "name": "Google Gemini Advanced",
-      "version": "1.5.2",
+      "version": "127.0.6533.100",
       "date": "15.07.2025",
-      "description": "Erweiterte Multimodalität für komplexere Anfragen und verbesserte Argumentationsfähigkeiten."
+      "description": "Sicherheits-Updates zur Behebung kritischer Schwachstellen und allgemeine Stabilitätsverbesserungen."
     },
     {
-      "name": "Android Security Bulletin",
-      "version": "Juli 2025 Patch",
-      "date": "12.07.2025",
-      "description": "Monatliche Sicherheitsupdates zur Behebung kritischer Schwachstellen in Systemkomponenten und Drittanbieter-Bibliotheken."
+      "name": "Android OS",
+      "version": "15.0.1",
+      "date": "14.07.2025",
+      "description": "Monatliche Sicherheits-Patches zur Stärkung der Systemintegrität und Behebung kleinerer Bugs."
     },
     {
       "name": "Node.js",
       "version": "v24.4.1",
-      "date": "17.07.2025",
-      "description": "Stabilitätsverbesserungen und Bugfixes, Aktualisierung der V8-Engine auf die neueste Version."
+      "date": "16.07.2025",
+      "description": "Aktualisierung der v24-LTS-Linie mit Performance-Optimierungen, Bugfixes und verbesserten Kompatibilitäten."
     }
   ],
   "importantFacts": [
@@ -129,7 +129,7 @@
     "eventsCount": 1,
     "technologyCount": 12,
     "factsCount": 3,
-    "generationTimeMs": 12842,
+    "generationTimeMs": 13593,
     "newsSourcesQueried": 12,
     "techSourcesQueried": 6
   }
