@@ -1,8 +1,8 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-17T15:29:47.600Z",
-    "nextUpdate": "2025-07-17T21:29:47.600Z",
-    "version": "2.1",
+    "lastUpdated": "2025-07-17T15:38:59.173Z",
+    "nextUpdate": "2025-07-17T21:38:59.173Z",
+    "version": "2.2",
     "purpose": "Aktuelle Kontextinformationen für KI-Systeme",
     "source": "Automatisch generiert via Gemini AI + News-Scraping",
     "dataQuality": {
@@ -21,29 +21,30 @@
     "dayOfWeek": "Donnerstag",
     "monthName": "Juli",
     "iso": "2025-07-17",
-    "timestamp": "2025-07-17T15:29:47.600Z",
+    "timestamp": "2025-07-17T15:38:59.173Z",
     "timezone": "UTC",
     "weekOfYear": 29
   },
   "events": [
     {
-      "date": "17.7.2025",
-      "category": "System",
-      "description": "Automatische Updates funktionieren",
-      "source": "AICO"
+      "date": "17.07.2025",
+      "category": "Politik",
+      "description": "EU-Gipfel in Brüssel ringt um Einigung bei der Reform des Emissionshandels und der Energieversorgungssicherheit.",
+      "source": ""
     }
   ],
   "technology": [
     {
-      "name": "AICO",
-      "version": "2.0",
-      "date": "17.7.2025",
-      "description": "Aktuelle News-Integration"
+      "name": "Google Chrome",
+      "version": "137.0.68xx.xx",
+      "date": "16.07.2025",
+      "description": "Stabile Version mit verbesserten WebGPU-Funktionen, optimierter Speicherverwaltung und neuen CSS-Features für Entwickler."
     }
   ],
   "importantFacts": [
     "Das aktuelle Jahr ist 2025",
-    "KI-Systeme werden kontinuierlich verbessert"
+    "KI-Assistenten sind alltäglich geworden",
+    "Automatisierung hat stark zugenommen"
   ],
   "context": {
     "timeframe": "Juli 2025",
@@ -61,8 +62,8 @@
   "statistics": {
     "eventsCount": 1,
     "technologyCount": 1,
-    "factsCount": 2,
-    "generationTimeMs": 2453,
+    "factsCount": 3,
+    "generationTimeMs": 14382,
     "newsSourcesQueried": 8,
     "techSourcesQueried": 6
   }
