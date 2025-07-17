@@ -399,6 +399,10 @@
             <h2 style="margin-bottom: 16px; color: var(--text-primary);">🔗 Maschinenlesbare Daten</h2>
             <p style="margin-bottom: 20px; color: var(--text-secondary);">Für KI-Systeme, APIs und automatisierte Verarbeitung:</p>
             
+            <button onclick="loadContextData()" style="background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-bottom: 20px;">
+                🔄 Daten neu laden
+            </button>
+            
             <a href="./context.json" class="json-link" target="_blank">
                 📄 JSON Kontext-Daten
             </a>
@@ -488,7 +492,8 @@ Features:
         async function loadContextData() {
             try {
                 console.log('🔄 Lade Kontext-Daten...');
-                const response = await fetch('./context.json');
+                // Cache-Busting: Immer neueste Version laden
+                const response = await fetch('./context.json?t=' + Date.now());
                 contextData = await response.json();
                 console.log('✅ Kontext-Daten geladen:', contextData);
                 
@@ -502,51 +507,60 @@ Features:
                 
                 // Events anzeigen
                 const eventsDiv = document.getElementById('events-content');
-                if (contextData.events && contextData.events.length > 0) {
+                console.log('📊 Events Array:', contextData.events);
+                console.log('📊 Events Länge:', contextData.events?.length);
+                
+                if (contextData.events && Array.isArray(contextData.events) && contextData.events.length > 0) {
                     console.log('📰 Zeige Events an:', contextData.events);
                     eventsDiv.innerHTML = contextData.events.map(event => 
                         `<div class="data-item">
-                            <strong>${event.category}:</strong>
-                            <span class="description">${event.description}</span>
-                            <span class="meta">${event.date}</span>
+                            <strong>${event.category || 'Event'}:</strong>
+                            <span class="description">${event.description || 'Keine Beschreibung'}</span>
+                            <span class="meta">${event.date || 'Kein Datum'}</span>
                         </div>`
                     ).join('');
                     setQualityIndicator('events-quality', contextData.meta?.dataQuality?.events || 'good');
                 } else {
-                    console.log('⚠️ Keine Events gefunden');
-                    eventsDiv.innerHTML = '<p style="color: var(--text-secondary);">Keine aktuellen Ereignisse verfügbar</p>';
+                    console.log('⚠️ Keine Events gefunden oder Array leer');
+                    eventsDiv.innerHTML = '<p style="color: var(--warning);">⚠️ Keine aktuellen Ereignisse verfügbar</p>';
                     setQualityIndicator('events-quality', 'fallback');
                 }
                 
                 // Tech Updates anzeigen
                 const techDiv = document.getElementById('tech-content');
-                if (contextData.technology && contextData.technology.length > 0) {
+                console.log('📊 Tech Array:', contextData.technology);
+                console.log('📊 Tech Länge:', contextData.technology?.length);
+                
+                if (contextData.technology && Array.isArray(contextData.technology) && contextData.technology.length > 0) {
                     console.log('💻 Zeige Tech-Updates an:', contextData.technology);
                     techDiv.innerHTML = contextData.technology.map(tech => 
                         `<div class="data-item">
-                            <strong>${tech.name}:</strong>
-                            <span class="description">${tech.description} (v${tech.version})</span>
-                            <span class="meta">${tech.date}</span>
+                            <strong>${tech.name || 'Tech'}:</strong>
+                            <span class="description">${tech.description || 'Keine Beschreibung'} ${tech.version ? '(v' + tech.version + ')' : ''}</span>
+                            <span class="meta">${tech.date || 'Kein Datum'}</span>
                         </div>`
                     ).join('');
                     setQualityIndicator('tech-quality', contextData.meta?.dataQuality?.technology || 'good');
                 } else {
-                    console.log('⚠️ Keine Tech-Updates gefunden');
-                    techDiv.innerHTML = '<p style="color: var(--text-secondary);">Keine Tech-Updates verfügbar</p>';
+                    console.log('⚠️ Keine Tech-Updates gefunden oder Array leer');
+                    techDiv.innerHTML = '<p style="color: var(--warning);">⚠️ Keine Tech-Updates verfügbar</p>';
                     setQualityIndicator('tech-quality', 'fallback');
                 }
 
                 // Wichtige Fakten anzeigen
                 const factsDiv = document.getElementById('facts-content');
-                if (contextData.importantFacts && contextData.importantFacts.length > 0) {
+                console.log('📊 Facts Array:', contextData.importantFacts);
+                console.log('📊 Facts Länge:', contextData.importantFacts?.length);
+                
+                if (contextData.importantFacts && Array.isArray(contextData.importantFacts) && contextData.importantFacts.length > 0) {
                     console.log('💡 Zeige Fakten an:', contextData.importantFacts);
                     factsDiv.innerHTML = contextData.importantFacts.map(fact => 
-                        `<div class="fact-item">${fact}</div>`
+                        `<div class="fact-item">${fact || 'Kein Fakt'}</div>`
                     ).join('');
                     setQualityIndicator('facts-quality', contextData.meta?.dataQuality?.facts || 'good');
                 } else {
-                    console.log('⚠️ Keine Fakten gefunden');
-                    factsDiv.innerHTML = '<p style="color: var(--text-secondary);">Keine wichtigen Fakten verfügbar</p>';
+                    console.log('⚠️ Keine Fakten gefunden oder Array leer');
+                    factsDiv.innerHTML = '<p style="color: var(--warning);">⚠️ Keine wichtigen Fakten verfügbar</p>';
                     setQualityIndicator('facts-quality', 'fallback');
                 }
                 
