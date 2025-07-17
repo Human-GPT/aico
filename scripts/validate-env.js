@@ -38,8 +38,7 @@ if (fs.existsSync(envPath)) {
 const envApiKey = process.env.GEMINI_API_KEY;
 if (envApiKey) {
     console.log('✅ GEMINI_API_KEY Umgebungsvariable ist gesetzt');
-    console.log(`   Länge: ${envApiKey.length} Zeichen`);
-    console.log(`   Start: ${envApiKey.substring(0, 10)}...`);
+    console.log(`   Länge: ${envApiKey.length} Zeichen (Details werden aus Sicherheitsgründen nicht angezeigt)`);
 } else {
     console.log('❌ GEMINI_API_KEY Umgebungsvariable ist NICHT gesetzt');
 }
