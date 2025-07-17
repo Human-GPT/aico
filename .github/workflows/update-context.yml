@@ -5,12 +5,10 @@ on:
     # Läuft alle 6 Stunden
     - cron: '0 */6 * * *'
   workflow_dispatch: # Erlaubt manuellen Start
-  # Push Trigger entfernt um Endlosschleife zu vermeiden
 
-# Erweiterte Berechtigungen für den Workflow
+# Berechtigungen für den Workflow
 permissions:
   contents: write
-  actions: read
 
 jobs:
   update-context:

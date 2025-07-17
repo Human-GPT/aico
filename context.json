@@ -1,21 +1,50 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-17T14:08:04.055Z",
-    "nextUpdate": "2025-07-17T20:08:04.055Z",
-    "version": "1.0",
-    "purpose": "Aktuelle Kontextinformationen für KI-Systeme"
+    "lastUpdated": "2025-07-17T15:19:53.539Z",
+    "nextUpdate": "2025-07-17T21:19:53.539Z",
+    "version": "2.1",
+    "purpose": "Aktuelle Kontextinformationen für KI-Systeme",
+    "source": "Automatisch generiert via Gemini AI + News-Scraping",
+    "dataQuality": {
+      "events": "fallback",
+      "technology": "fallback",
+      "facts": "good"
+    },
+    "newsSources": 8,
+    "techSources": 6
   },
   "currentDate": {
     "year": 2025,
     "month": 7,
     "day": 17,
+    "quarter": 3,
     "dayOfWeek": "Donnerstag",
+    "monthName": "Juli",
     "iso": "2025-07-17",
-    "timestamp": "2025-07-17T14:08:04.055Z"
+    "timestamp": "2025-07-17T15:19:53.539Z",
+    "timezone": "UTC",
+    "weekOfYear": 29
   },
-  "events": [],
-  "technology": [],
-  "importantFacts": [],
+  "events": [
+    {
+      "date": "17.7.2025",
+      "category": "System",
+      "description": "Automatische Updates funktionieren",
+      "source": "AICO"
+    }
+  ],
+  "technology": [
+    {
+      "name": "AICO",
+      "version": "2.0",
+      "date": "17.7.2025",
+      "description": "Aktuelle News-Integration"
+    }
+  ],
+  "importantFacts": [
+    "Das aktuelle Jahr ist 2025",
+    "KI-Systeme werden kontinuierlich verbessert"
+  ],
   "context": {
     "timeframe": "Juli 2025",
     "worldState": "Post-2024 KI-Boom, kontinuierliche technologische Entwicklung",
@@ -24,6 +53,17 @@
       "Automatisierung",
       "Multimodale Systeme",
       "LLM Integration"
-    ]
+    ],
+    "lastMajorUpdate": "2025-07-17",
+    "newsCoverage": "Letzte 7 Tage",
+    "updateFrequency": "Alle 6 Stunden"
+  },
+  "statistics": {
+    "eventsCount": 1,
+    "technologyCount": 1,
+    "factsCount": 2,
+    "generationTimeMs": 2097,
+    "newsSourcesQueried": 8,
+    "techSourcesQueried": 6
   }
 }
