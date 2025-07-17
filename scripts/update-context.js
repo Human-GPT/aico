@@ -79,7 +79,7 @@ async function extractNewsFromContent(htmlContent, sourceName) {
 
 async function getCurrentEvents() {
     const model = genAI.getGenerativeModel({ 
-        model: "gemini-pro",
+        model: "gemini-2.5-flash",
         generationConfig: {
             temperature: 0.3,
             topK: 40,
@@ -170,7 +170,7 @@ Antworte NUR mit dem JSON Array.`;
 
 async function getCurrentTechInfo() {
     const model = genAI.getGenerativeModel({ 
-        model: "gemini-pro",
+        model: "gemini-2.5-flash",
         generationConfig: {
             temperature: 0.2,
             maxOutputTokens: 2048,
@@ -256,7 +256,7 @@ Antworte NUR mit dem JSON Array.`;
 
 async function generateImportantFacts() {
     const model = genAI.getGenerativeModel({ 
-        model: "gemini-pro",
+        model: "gemini-2.5-flash",
         generationConfig: {
             temperature: 0.1,
             maxOutputTokens: 1024,
@@ -345,7 +345,7 @@ async function updateContextData() {
             meta: {
                 lastUpdated: now.toISOString(),
                 nextUpdate: new Date(now.getTime() + 6 * 60 * 60 * 1000).toISOString(),
-                version: "2.1",
+                version: "2.2",
                 purpose: "Aktuelle Kontextinformationen für KI-Systeme",
                 source: "Automatisch generiert via Gemini AI + News-Scraping",
                 dataQuality: {
