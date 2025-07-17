@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-17T14:08:04.055Z",
-    "nextUpdate": "2025-07-17T20:08:04.055Z",
+    "lastUpdated": "2025-07-17T14:50:35.921Z",
+    "nextUpdate": "2025-07-17T20:50:35.921Z",
     "version": "1.0",
     "purpose": "Aktuelle Kontextinformationen für KI-Systeme"
   },
@@ -11,7 +11,7 @@
     "day": 17,
     "dayOfWeek": "Donnerstag",
     "iso": "2025-07-17",
-    "timestamp": "2025-07-17T14:08:04.055Z"
+    "timestamp": "2025-07-17T14:50:35.921Z"
   },
   "events": [],
   "technology": [],
