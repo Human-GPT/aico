@@ -1,13 +1,13 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-17T16:24:03.886Z",
-    "nextUpdate": "2025-07-17T22:24:03.886Z",
+    "lastUpdated": "2025-07-17T16:25:30.163Z",
+    "nextUpdate": "2025-07-17T22:25:30.163Z",
     "version": "2.2",
     "purpose": "Aktuelle Kontextinformationen für KI-Systeme",
     "source": "Automatisch generiert via Gemini AI + News-Scraping",
     "dataQuality": {
-      "events": "good",
-      "technology": "fallback",
+      "events": "fallback",
+      "technology": "good",
       "facts": "good"
     },
     "newsSources": 12,
@@ -21,7 +21,7 @@
     "dayOfWeek": "Donnerstag",
     "monthName": "Juli",
     "iso": "2025-07-17",
-    "timestamp": "2025-07-17T16:24:03.886Z",
+    "timestamp": "2025-07-17T16:25:30.163Z",
     "timezone": "UTC",
     "weekOfYear": 29
   },
@@ -29,20 +29,88 @@
     {
       "date": "17.7.2025",
       "category": "System",
-      "description": "AICO Kontext-System läuft automatisch",
-      "source": "AICO"
-    },
-    {
-      "date": "17.7.2025",
-      "category": "Technologie",
-      "description": "KI-Systeme werden kontinuierlich verbessert",
+      "description": "AICO System erfolgreich aktualisiert",
       "source": "AICO"
     }
   ],
-  "technology": [],
+  "technology": [
+    {
+      "name": "Node.js",
+      "version": "24.4.1",
+      "date": "17.7.2025",
+      "description": "JavaScript Runtime - Aktuelle stabile Version"
+    },
+    {
+      "name": "React",
+      "version": "19.1.0",
+      "date": "17.7.2025",
+      "description": "UI Framework - Aktuelle stabile Version"
+    },
+    {
+      "name": "Vue.js",
+      "version": "3.5.17",
+      "date": "17.7.2025",
+      "description": "Progressive Framework - Aktuelle stabile Version"
+    },
+    {
+      "name": "Angular",
+      "version": "20.1.1",
+      "date": "17.7.2025",
+      "description": "Web Framework - Aktuelle stabile Version"
+    },
+    {
+      "name": "TypeScript",
+      "version": "5.8.3",
+      "date": "17.7.2025",
+      "description": "JavaScript mit Types - Aktuelle stabile Version"
+    },
+    {
+      "name": "Express.js",
+      "version": "5.1.0",
+      "date": "17.7.2025",
+      "description": "Web Server Framework - Aktuelle stabile Version"
+    },
+    {
+      "name": "Webpack",
+      "version": "5.100.2",
+      "date": "17.7.2025",
+      "description": "Module Bundler - Aktuelle stabile Version"
+    },
+    {
+      "name": "Vite",
+      "version": "7.0.5",
+      "date": "17.7.2025",
+      "description": "Build Tool - Aktuelle stabile Version"
+    },
+    {
+      "name": "Google Chrome",
+      "version": "128.0.6543.12",
+      "date": "16.07.2025",
+      "description": "Wichtige Sicherheitsupdates zur Behebung mehrerer kritischer Schwachstellen und Leistungsverbesserungen."
+    },
+    {
+      "name": "Google Gemini Advanced",
+      "version": "1.5.2",
+      "date": "15.07.2025",
+      "description": "Erweiterte Multimodalität für komplexere Anfragen und verbesserte Argumentationsfähigkeiten."
+    },
+    {
+      "name": "Android Security Bulletin",
+      "version": "Juli 2025 Patch",
+      "date": "12.07.2025",
+      "description": "Monatliche Sicherheitsupdates zur Behebung kritischer Schwachstellen in Systemkomponenten und Drittanbieter-Bibliotheken."
+    },
+    {
+      "name": "Node.js",
+      "version": "v24.4.1",
+      "date": "17.07.2025",
+      "description": "Stabilitätsverbesserungen und Bugfixes, Aktualisierung der V8-Engine auf die neueste Version."
+    }
+  ],
   "importantFacts": [
     "Das aktuelle Jahr ist 2025",
-    "KI-Systeme werden kontinuierlich verbessert"
+    "KI-Assistenten sind alltäglich geworden",
+    "Automatisierung hat stark zugenommen"
   ],
   "context": {
     "timeframe": "Juli 2025",
@@ -58,10 +126,10 @@
     "updateFrequency": "Alle 6 Stunden"
   },
   "statistics": {
-    "eventsCount": 2,
-    "technologyCount": 0,
-    "factsCount": 2,
-    "generationTimeMs": 6082,
+    "eventsCount": 1,
+    "technologyCount": 12,
+    "factsCount": 3,
+    "generationTimeMs": 12842,
     "newsSourcesQueried": 12,
     "techSourcesQueried": 6
   }
