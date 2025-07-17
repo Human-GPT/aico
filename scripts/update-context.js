@@ -181,34 +181,45 @@ async function getCurrentTechInfo() {
     
     console.log('💻 Sammle aktuelle Tech-News...');
     
-    // Sammle Tech-News
-    const techPromises = TECH_SOURCES.map(async (url) => {
-        const content = await fetchWebContent(url);
-        return extractNewsFromContent(content, new URL(url).hostname);
-    });
+    // Sammle Tech-News und beliebte Package-Versionen parallel
+    const [techResults, popularPackages] = await Promise.allSettled([
+        Promise.allSettled(TECH_SOURCES.map(async (url) => {
+            const content = await fetchWebContent(url);
+            return extractNewsFromContent(content, new URL(url).hostname);
+        })),
+        getPopularPackageVersions()
+    ]);
     
-    const techResults = await Promise.allSettled(techPromises);
-    const validTech = techResults
-        .filter(result => result.status === 'fulfilled' && result.value)
-        .map(result => result.value)
-        .slice(0, 3);
+    const validTech = techResults.status === 'fulfilled' 
+        ? techResults.value
+            .filter(result => result.status === 'fulfilled' && result.value)
+            .map(result => result.value)
+            .slice(0, 3)
+        : [];
     
-    console.log(`✅ ${validTech.length} Tech-Quellen erfolgreich abgerufen`);
+    const packages = popularPackages.status === 'fulfilled' ? popularPackages.value : [];
+    
+    console.log(`✅ ${validTech.length} Tech-Quellen und ${packages.length} Package-Versionen abgerufen`);
     
     const techContext = validTech.length > 0 
         ? `\n\nKontext aus Tech-News:\n${validTech.map(t => `${t.source}: ${t.content.substring(0, 200)}...`).join('\n')}`
         : '';
     
-    const prompt = `Du bist ein Tech-Experte. Erstelle eine JSON-Liste der 10 wichtigsten Software/Technologie-Updates der letzten Woche.
+    const packagesContext = packages.length > 0
+        ? `\n\nAktuelle beliebte Package-Versionen:\n${packages.map(p => `${p.name}: v${p.version}`).join(', ')}`
+        : '';
+    
+    const prompt = `Du bist ein Tech-Experte. Erstelle eine JSON-Liste der wichtigsten Software/Technologie-Updates der letzten Woche.
 
 Berücksichtige AKTUELLE Releases und Updates:
-- Node.js, Python, React, Vue.js, Angular neue Versionen
 - Browser-Updates (Chrome, Firefox, Safari, Edge)
 - KI-Modelle (ChatGPT, Claude, Gemini, etc.)
-- Wichtige Framework-Updates
 - Mobile Betriebssysteme (iOS, Android)
 - Sicherheits-Updates und Patches
-${techContext}
+- Andere relevante Tools und Frameworks
+${techContext}${packagesContext}
+
+WICHTIG: Kombiniere maximal 5-6 echte News-Updates mit den aktuellen Package-Versionen für eine ausgewogene Liste.
 
 Format (exakt):
 [
@@ -226,31 +237,41 @@ Antworte NUR mit dem JSON Array.`;
 
     try {
         console.log('🤖 Generiere Tech-Updates mit Gemini AI...');
-        const result = await model.generateContent(prompt);
-        const response = await result.response;
-        const text = response.text();
         
-        const technology = await safeJsonParse(text, [
-            { 
-                name: "AICO System", 
-                version: "2.0", 
-                date: currentDate.toLocaleDateString('de-DE'), 
-                description: "Verbesserte News-Integration" 
-            }
+        // Parallel: AI-generierte Updates + echte Package-Versionen
+        const [aiResult] = await Promise.allSettled([
+            model.generateContent(prompt)
         ]);
         
-        console.log(`✅ ${technology.length} Tech-Updates generiert`);
-        return technology.slice(0, 10);
+        let aiTechnology = [];
+        if (aiResult.status === 'fulfilled') {
+            const response = await aiResult.value.response;
+            const text = response.text();
+            aiTechnology = await safeJsonParse(text, []);
+        }
+        
+        // Kombiniere AI-Updates mit echten Package-Versionen
+        const combinedTechnology = [
+            ...packages, // Echte Package-Versionen zuerst
+            ...aiTechnology.slice(0, 6) // Max 6 AI-generierte Updates
+        ].slice(0, 12); // Gesamt max 12 Items
+        
+        console.log(`✅ ${combinedTechnology.length} Tech-Updates generiert (${packages.length} Packages + ${aiTechnology.length} AI-Updates)`);
+        return combinedTechnology;
     } catch (error) {
         console.error('❌ Fehler beim Generieren der Tech-Infos:', error.message);
-        return [
+        
+        // Fallback: Nur Package-Versionen verwenden
+        const fallbackTech = packages.length > 0 ? packages : [
             { 
                 name: "AICO", 
                 version: "2.0", 
                 date: currentDate.toLocaleDateString('de-DE'), 
-                description: "Aktuelle News-Integration" 
+                description: "Aktuelle News-Integration mit Package-Tracking" 
             }
         ];
+        
+        return fallbackTech;
     }
 }
 
@@ -324,6 +345,99 @@ async function safeJsonParse(text, fallback = []) {
         console.error('❌ JSON Parse Fehler:', error.message);
         return fallback;
     }
+}
+
+// Beliebte Pakete und deren APIs für Versionschecking
+const POPULAR_PACKAGES = {
+    'Node.js': {
+        api: 'https://nodejs.org/dist/index.json',
+        parseVersion: (data) => data[0]?.version,
+        description: 'JavaScript Runtime'
+    },
+    'React': {
+        api: 'https://registry.npmjs.org/react/latest',
+        parseVersion: (data) => data.version,
+        description: 'UI Framework'
+    },
+    'Vue.js': {
+        api: 'https://registry.npmjs.org/vue/latest',
+        parseVersion: (data) => data.version,
+        description: 'Progressive Framework'
+    },
+    'Angular': {
+        api: 'https://registry.npmjs.org/@angular/core/latest',
+        parseVersion: (data) => data.version,
+        description: 'Web Framework'
+    },
+    'TypeScript': {
+        api: 'https://registry.npmjs.org/typescript/latest',
+        parseVersion: (data) => data.version,
+        description: 'JavaScript mit Types'
+    },
+    'Express.js': {
+        api: 'https://registry.npmjs.org/express/latest',
+        parseVersion: (data) => data.version,
+        description: 'Web Server Framework'
+    },
+    'Webpack': {
+        api: 'https://registry.npmjs.org/webpack/latest',
+        parseVersion: (data) => data.version,
+        description: 'Module Bundler'
+    },
+    'Vite': {
+        api: 'https://registry.npmjs.org/vite/latest',
+        parseVersion: (data) => data.version,
+        description: 'Build Tool'
+    },
+    'Next.js': {
+        api: 'https://registry.npmjs.org/next/latest',
+        parseVersion: (data) => data.version,
+        description: 'React Framework'
+    },
+    'Tailwind CSS': {
+        api: 'https://registry.npmjs.org/tailwindcss/latest',
+        parseVersion: (data) => data.version,
+        description: 'CSS Framework'
+    }
+};
+
+async function getPackageVersion(packageInfo) {
+    try {
+        const response = await axios.get(packageInfo.api, {
+            timeout: 5000,
+            headers: { 'User-Agent': 'AICO-ContextBot/1.0' }
+        });
+        const version = packageInfo.parseVersion(response.data);
+        return version ? version.replace(/^v/, '') : null;
+    } catch (error) {
+        console.error(`❌ Fehler beim Abrufen von ${packageInfo.api}:`, error.message);
+        return null;
+    }
+}
+
+async function getPopularPackageVersions() {
+    console.log('📦 Rufe beliebte Package-Versionen ab...');
+    const packagePromises = Object.entries(POPULAR_PACKAGES).map(async ([name, info]) => {
+        const version = await getPackageVersion(info);
+        if (version) {
+            return {
+                name,
+                version,
+                date: new Date().toLocaleDateString('de-DE'),
+                description: `${info.description} - Aktuelle stabile Version`
+            };
+        }
+        return null;
+    });
+    
+    const results = await Promise.allSettled(packagePromises);
+    const packages = results
+        .filter(result => result.status === 'fulfilled' && result.value)
+        .map(result => result.value)
+        .slice(0, 8); // Max 8 Pakete
+    
+    console.log(`✅ ${packages.length} Package-Versionen abgerufen`);
+    return packages;
 }
 
 async function updateContextData() {

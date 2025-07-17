@@ -424,8 +424,11 @@ fetch('https://your-domain.netlify.app/context.json')
 
         <div class="footer">
             <p>
-                <strong>Letzte Aktualisierung:</strong> <span id="last-update" class="loading">Wird geladen...</span>
+                <strong>Kontext-Daten vom:</strong> <span id="last-update" class="loading">Wird geladen...</span>
                 <span class="badge" id="update-status">AUTO</span>
+            </p>
+            <p style="margin-top: 4px; font-size: 0.875rem;">
+                <strong>Seite geladen:</strong> <span id="page-load-time">-</span>
             </p>
             <p style="margin-top: 8px; font-size: 0.875rem;">
                 Generiert mit <span id="generation-time">-</span>ms • 
@@ -453,6 +456,12 @@ fetch('https://your-domain.netlify.app/context.json')
             document.getElementById('current-quarter').textContent = `Q${Math.ceil((now.getMonth() + 1) / 3)} ${now.getFullYear()}`;
             document.getElementById('current-day').textContent = now.toLocaleDateString('de-DE', { weekday: 'long' });
             document.getElementById('current-utc').textContent = now.toISOString();
+            
+            // Update "Seite geladen" Zeit
+            const loadTime = document.getElementById('page-load-time');
+            if (loadTime) {
+                loadTime.textContent = now.toLocaleString('de-DE');
+            }
             
             // Entferne Loading-Klassen
             document.querySelectorAll('.loading').forEach(el => el.classList.remove('loading'));
@@ -573,11 +582,14 @@ fetch('https://your-domain.netlify.app/context.json')
             updateDateTime();
             loadContextData();
             
-            // Datum jede Minute aktualisieren
+            // Datum jede Minute aktualisieren (für Live-Zeit)
             setInterval(updateDateTime, 60000);
             
             // Kontext-Daten alle 10 Minuten neu laden
             setInterval(loadContextData, 600000);
+            
+            // Seitenladezeit initial setzen
+            document.getElementById('page-load-time').textContent = new Date().toLocaleString('de-DE');
         });
 
         // Service Worker für bessere Performance (optional)

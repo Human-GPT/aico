@@ -53,32 +53,31 @@ jobs:
         node scripts/update-context.js
         echo "✅ Kontext-Update abgeschlossen"
     
-    - name: Check for changes
-      id: changes
+    - name: Check if context generation was successful
+      id: context_check
       run: |
-        if git diff --quiet HEAD context.json; then
-          echo "changed=false" >> $GITHUB_OUTPUT
-          echo "ℹ️  Keine Änderungen an context.json"
+        if [ -f "context.json" ]; then
+          echo "success=true" >> $GITHUB_OUTPUT
+          echo "✅ Context.json erfolgreich generiert"
+          echo "📄 Dateigröße: $(stat -c%s context.json) Bytes"
         else
-          echo "changed=true" >> $GITHUB_OUTPUT
-          echo "📝 Änderungen an context.json erkannt"
+          echo "success=false" >> $GITHUB_OUTPUT
+          echo "❌ Context.json nicht gefunden"
         fi
     
-    - name: Commit and push changes
-      if: steps.changes.outputs.changed == 'true'
+    - name: Commit and push context data
+      if: steps.context_check.outputs.success == 'true'
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add context.json
-        git commit -m "🤖 Auto-Update: Kontext-Daten $(date '+%Y-%m-%d %H:%M')" || exit 0
-        git push
-    
-    - name: Update index.html timestamp
-      if: steps.changes.outputs.changed == 'true'
-      run: |
-        echo "🔄 Aktualisiere HTML-Timestamp..."
-        # Setze Build-Timestamp in HTML
-        sed -i "s/Letzte Aktualisierung: .*/Letzte Aktualisierung: $(date '+%d.%m.%Y %H:%M')/" index.html
-        git add index.html
-        git commit -m "📅 Update HTML timestamp" || exit 0
-        git push 
+        
+        # Nur context.json committen (auch wenn in .gitignore)
+        git add -f context.json
+        
+        if git diff --cached --quiet; then
+          echo "ℹ️  Keine Änderungen zu committen"
+        else
+          git commit -m "🤖 Auto-Update: Kontext-Daten $(date '+%Y-%m-%d %H:%M UTC')"
+          git push
+          echo "✅ Context-Daten erfolgreich gepusht"
+        fi 
