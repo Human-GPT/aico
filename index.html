@@ -324,10 +324,14 @@
                 <span class="value" id="tech-count">-</span>
                 <div class="label">Tech-Updates</div>
             </div>
-            <div class="status-item">
-                <span class="value" id="facts-count">-</span>
-                <div class="label">Wichtige Fakten</div>
-            </div>
+                            <div class="status-item">
+                    <span class="value" id="facts-count">-</span>
+                    <div class="label">Wichtige Fakten</div>
+                </div>
+                <div class="status-item">
+                    <span class="value" id="news-sources">-</span>
+                    <div class="label">News-Quellen</div>
+                </div>
         </div>
 
         <div class="grid">
@@ -470,6 +474,7 @@ fetch('https://your-domain.netlify.app/context.json')
                 document.getElementById('events-count').textContent = contextData.events?.length || 0;
                 document.getElementById('tech-count').textContent = contextData.technology?.length || 0;
                 document.getElementById('facts-count').textContent = contextData.importantFacts?.length || 0;
+                document.getElementById('news-sources').textContent = contextData.meta?.newsSources || 0;
                 
                 // Events anzeigen
                 const eventsDiv = document.getElementById('events-content');
@@ -530,6 +535,14 @@ fetch('https://your-domain.netlify.app/context.json')
                     const qualityScore = qualities ? 
                         Object.values(qualities).filter(q => q === 'good').length / Object.keys(qualities).length * 100 : 100;
                     document.getElementById('data-quality').textContent = `${Math.round(qualityScore)}%`;
+                }
+
+                // Zeige News-Coverage Info
+                if (contextData.context?.newsCoverage) {
+                    const coverageInfo = document.createElement('div');
+                    coverageInfo.style.cssText = 'margin-top: 8px; font-size: 0.875rem; color: var(--text-secondary);';
+                    coverageInfo.textContent = `📰 News-Coverage: ${contextData.context.newsCoverage}`;
+                    document.querySelector('.footer').appendChild(coverageInfo);
                 }
                 
             } catch (error) {
