@@ -1,12 +1,12 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-17T18:57:38.486Z",
-    "nextUpdate": "2025-07-18T00:57:38.486Z",
+    "lastUpdated": "2025-07-18T03:51:35.097Z",
+    "nextUpdate": "2025-07-18T09:51:35.097Z",
     "version": "2.2",
     "purpose": "Aktuelle Kontextinformationen für KI-Systeme",
     "source": "Automatisch generiert via Gemini AI + News-Scraping",
     "dataQuality": {
-      "events": "fallback",
+      "events": "good",
       "technology": "good",
       "facts": "good"
     },
@@ -16,95 +16,119 @@
   "currentDate": {
     "year": 2025,
     "month": 7,
-    "day": 17,
+    "day": 18,
     "quarter": 3,
-    "dayOfWeek": "Donnerstag",
+    "dayOfWeek": "Freitag",
     "monthName": "Juli",
-    "iso": "2025-07-17",
-    "timestamp": "2025-07-17T18:57:38.486Z",
+    "iso": "2025-07-18",
+    "timestamp": "2025-07-18T03:51:35.097Z",
     "timezone": "UTC",
     "weekOfYear": 29
   },
   "events": [
     {
-      "date": "17.07.2025",
-      "category": "Gesellschaft",
-      "description": "Bamberger Erzbischof Gössl nimmt Kritik an Brosius-Gersdorf zurück.",
+      "date": "18.07.2025",
+      "category": "Politik",
+      "description": "G20-Treffen findet in Südafrika statt; Vizekanzler Klingbeil nimmt teil.",
       "source": "tagesschau.de"
+    },
+    {
+      "date": "18.07.2025",
+      "category": "Politik",
+      "description": "Parlamentarische Sommerpause ist von tiefen Koalitionskrisen und internem Krach geprägt.",
+      "source": "zeit.de"
+    },
+    {
+      "date": "18.07.2025",
+      "category": "Politik",
+      "description": "US-Regierung (Republikaner) kürzt Mittel für National Weather Service und Hochwasserprävention.",
+      "source": "sueddeutsche.de"
+    },
+    {
+      "date": "18.07.2025",
+      "category": "Politik",
+      "description": "Asylgipfel mit Innenminister Dobrindt (CSU) steht bevor; Debatte über humanitäre Migrationswende.",
+      "source": "welt.de"
+    },
+    {
+      "date": "18.07.2025",
+      "category": "Wirtschaft",
+      "description": "Aktuelle Börsenkurse: DAX bei 24.371 (+1,5%), MDAX bei 31.015 (+1,0%), Bitcoin bei 120.321 (0,0%).",
+      "source": "n-tv.de"
     }
   ],
   "technology": [
     {
       "name": "Node.js",
       "version": "24.4.1",
-      "date": "17.7.2025",
+      "date": "18.7.2025",
       "description": "JavaScript Runtime - Aktuelle stabile Version"
     },
     {
       "name": "React",
       "version": "19.1.0",
-      "date": "17.7.2025",
+      "date": "18.7.2025",
       "description": "UI Framework - Aktuelle stabile Version"
     },
     {
       "name": "Vue.js",
       "version": "3.5.17",
-      "date": "17.7.2025",
+      "date": "18.7.2025",
       "description": "Progressive Framework - Aktuelle stabile Version"
     },
     {
       "name": "Angular",
-      "version": "20.1.1",
-      "date": "17.7.2025",
+      "version": "20.1.2",
+      "date": "18.7.2025",
       "description": "Web Framework - Aktuelle stabile Version"
     },
     {
       "name": "TypeScript",
       "version": "5.8.3",
-      "date": "17.7.2025",
+      "date": "18.7.2025",
       "description": "JavaScript mit Types - Aktuelle stabile Version"
     },
     {
       "name": "Express.js",
       "version": "5.1.0",
-      "date": "17.7.2025",
+      "date": "18.7.2025",
       "description": "Web Server Framework - Aktuelle stabile Version"
     },
     {
       "name": "Webpack",
       "version": "5.100.2",
-      "date": "17.7.2025",
+      "date": "18.7.2025",
       "description": "Module Bundler - Aktuelle stabile Version"
     },
     {
       "name": "Vite",
       "version": "7.0.5",
-      "date": "17.7.2025",
+      "date": "18.7.2025",
       "description": "Build Tool - Aktuelle stabile Version"
     },
     {
-      "name": "OpenAI ChatGPT",
-      "version": "N/A (Agent-Funktion)",
-      "date": "17.07.2025",
-      "description": "Einführung eines allgemeinen KI-Agenten zur Automatisierung komplexer Aufgaben und Interaktionen über verschiedene Anwendungen hinweg."
+      "name": "ChatGPT",
+      "version": "Agent Capability Rollout",
+      "date": "18.07.2025",
+      "description": "OpenAI hat einen neuen, allgemeinen KI-Agenten in ChatGPT eingeführt, der komplexe Aufgaben automatisieren kann."
     },
     {
       "name": "Google Chrome",
       "version": "127.0.6533.100",
-      "date": "15.07.2025",
-      "description": "Sicherheits-Updates zur Behebung kritischer Schwachstellen und allgemeine Stabilitätsverbesserungen."
+      "date": "16.07.2025",
+      "description": "Wichtige Sicherheitsupdates zur Behebung kritischer Schwachstellen und Leistungsverbesserungen."
     },
     {
       "name": "Android OS",
       "version": "15.0.1",
-      "date": "14.07.2025",
-      "description": "Monatliche Sicherheits-Patches zur Stärkung der Systemintegrität und Behebung kleinerer Bugs."
+      "date": "15.07.2025",
+      "description": "Monatliches Sicherheitsupdate mit Patches für diverse Schwachstellen und allgemeinen Stabilitätsverbesserungen."
     },
     {
       "name": "Node.js",
       "version": "v24.4.1",
-      "date": "16.07.2025",
-      "description": "Aktualisierung der v24-LTS-Linie mit Performance-Optimierungen, Bugfixes und verbesserten Kompatibilitäten."
+      "date": "17.07.2025",
+      "description": "Aktualisierung mit Bugfixes, Stabilitätsverbesserungen und kleineren Leistungsoptimierungen."
     }
   ],
   "importantFacts": [
@@ -121,15 +145,15 @@
       "Multimodale Systeme",
       "LLM Integration"
     ],
-    "lastMajorUpdate": "2025-07-17",
+    "lastMajorUpdate": "2025-07-18",
     "newsCoverage": "Letzte 7 Tage",
     "updateFrequency": "Alle 6 Stunden"
   },
   "statistics": {
-    "eventsCount": 1,
+    "eventsCount": 5,
     "technologyCount": 12,
     "factsCount": 3,
-    "generationTimeMs": 13593,
+    "generationTimeMs": 11221,
     "newsSourcesQueried": 12,
     "techSourcesQueried": 6
   }
