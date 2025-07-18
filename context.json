@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-18T13:51:12.507Z",
-    "nextUpdate": "2025-07-18T19:51:12.507Z",
+    "lastUpdated": "2025-07-18T18:56:06.087Z",
+    "nextUpdate": "2025-07-19T00:56:06.087Z",
     "version": "2.2",
     "purpose": "Aktuelle Kontextinformationen für KI-Systeme",
     "source": "Automatisch generiert via Gemini AI + News-Scraping",
@@ -21,7 +21,7 @@
     "dayOfWeek": "Freitag",
     "monthName": "Juli",
     "iso": "2025-07-18",
-    "timestamp": "2025-07-18T13:51:12.507Z",
+    "timestamp": "2025-07-18T18:56:06.087Z",
     "timezone": "UTC",
     "weekOfYear": 29
   },
@@ -29,7 +29,7 @@
     {
       "date": "18.07.2025",
       "category": "Politik",
-      "description": "Friedrich Merz's Stimmung bei Sommerpressekonferenz verschlechtert sich.",
+      "description": "Debatte über einen möglichen 'Boomer-Soli' und die aktuelle Lage der Altersarmut in Deutschland; DIW beteiligt.",
       "source": "tagesschau.de"
     }
   ],
@@ -83,10 +83,10 @@
       "description": "Build Tool - Aktuelle stabile Version"
     },
     {
-      "name": "Claude 3.5 Sonnet",
-      "version": "New Model Release",
-      "date": "15.07.2025",
-      "description": "Anthropic kündigt Claude 3.5 Sonnet an, mit verbesserter Argumentation und schnellerer Performance für komplexe Aufgaben."
+      "name": "Google Chrome",
+      "version": "v130.0.6789.123",
+      "date": "16.07.2025",
+      "description": "Stabile Version mit verbesserter WebGPU-Unterstützung und neuen Privacy Sandbox APIs für Entwickler."
     }
   ],
   "importantFacts": [
@@ -111,7 +111,7 @@
     "eventsCount": 1,
     "technologyCount": 9,
     "factsCount": 3,
-    "generationTimeMs": 13077,
+    "generationTimeMs": 14409,
     "newsSourcesQueried": 12,
     "techSourcesQueried": 6
   }
