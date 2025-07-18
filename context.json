@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-18T07:00:29.634Z",
-    "nextUpdate": "2025-07-18T13:00:29.634Z",
+    "lastUpdated": "2025-07-18T13:51:12.507Z",
+    "nextUpdate": "2025-07-18T19:51:12.507Z",
     "version": "2.2",
     "purpose": "Aktuelle Kontextinformationen für KI-Systeme",
     "source": "Automatisch generiert via Gemini AI + News-Scraping",
@@ -21,7 +21,7 @@
     "dayOfWeek": "Freitag",
     "monthName": "Juli",
     "iso": "2025-07-18",
-    "timestamp": "2025-07-18T07:00:29.634Z",
+    "timestamp": "2025-07-18T13:51:12.507Z",
     "timezone": "UTC",
     "weekOfYear": 29
   },
@@ -29,8 +29,8 @@
     {
       "date": "18.07.2025",
       "category": "Politik",
-      "description": "Bundesregierung (Merz-Regierung) schiebt Dutzende afghanische Straftäter per Flug von Leipzig nach Kabul ab.",
-      "source": "welt.de"
+      "description": "Friedrich Merz's Stimmung bei Sommerpressekonferenz verschlechtert sich.",
+      "source": "tagesschau.de"
     }
   ],
   "technology": [
@@ -83,28 +83,10 @@
       "description": "Build Tool - Aktuelle stabile Version"
     },
     {
-      "name": "Google Chrome",
-      "version": "128.0.6543.21",
-      "date": "16.07.2025",
-      "description": "Release mit verbesserten Datenschutzfunktionen und optimierter WebGPU-Leistung."
-    },
-    {
-      "name": "OpenAI GPT-5 Mini",
-      "version": "New Model",
+      "name": "Claude 3.5 Sonnet",
+      "version": "New Model Release",
       "date": "15.07.2025",
-      "description": "Vorstellung eines neuen, kleineren KI-Modells mit Fokus auf Echtzeit-Interaktionen und geringere Latenz."
-    },
-    {
-      "name": "Android",
-      "version": "16 Beta 3",
-      "date": "12.07.2025",
-      "description": "Dritte Beta-Version mit Verbesserungen bei der Akkulaufzeit und neuen Benachrichtigungsoptionen."
-    },
-    {
-      "name": "React",
-      "version": "19.1.0",
-      "date": "17.07.2025",
-      "description": "Minor-Update mit Performance-Optimierungen und Bugfixes für Concurrent Features."
+      "description": "Anthropic kündigt Claude 3.5 Sonnet an, mit verbesserter Argumentation und schnellerer Performance für komplexe Aufgaben."
     }
   ],
   "importantFacts": [
@@ -127,9 +109,9 @@
   },
   "statistics": {
     "eventsCount": 1,
-    "technologyCount": 12,
+    "technologyCount": 9,
     "factsCount": 3,
-    "generationTimeMs": 15455,
+    "generationTimeMs": 13077,
     "newsSourcesQueried": 12,
     "techSourcesQueried": 6
   }
