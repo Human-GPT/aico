@@ -1,12 +1,12 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-18T03:51:35.097Z",
-    "nextUpdate": "2025-07-18T09:51:35.097Z",
+    "lastUpdated": "2025-07-18T07:00:29.634Z",
+    "nextUpdate": "2025-07-18T13:00:29.634Z",
     "version": "2.2",
     "purpose": "Aktuelle Kontextinformationen für KI-Systeme",
     "source": "Automatisch generiert via Gemini AI + News-Scraping",
     "dataQuality": {
-      "events": "good",
+      "events": "fallback",
       "technology": "good",
       "facts": "good"
     },
@@ -21,7 +21,7 @@
     "dayOfWeek": "Freitag",
     "monthName": "Juli",
     "iso": "2025-07-18",
-    "timestamp": "2025-07-18T03:51:35.097Z",
+    "timestamp": "2025-07-18T07:00:29.634Z",
     "timezone": "UTC",
     "weekOfYear": 29
   },
@@ -29,32 +29,8 @@
     {
       "date": "18.07.2025",
       "category": "Politik",
-      "description": "G20-Treffen findet in Südafrika statt; Vizekanzler Klingbeil nimmt teil.",
-      "source": "tagesschau.de"
-    },
-    {
-      "date": "18.07.2025",
-      "category": "Politik",
-      "description": "Parlamentarische Sommerpause ist von tiefen Koalitionskrisen und internem Krach geprägt.",
-      "source": "zeit.de"
-    },
-    {
-      "date": "18.07.2025",
-      "category": "Politik",
-      "description": "US-Regierung (Republikaner) kürzt Mittel für National Weather Service und Hochwasserprävention.",
-      "source": "sueddeutsche.de"
-    },
-    {
-      "date": "18.07.2025",
-      "category": "Politik",
-      "description": "Asylgipfel mit Innenminister Dobrindt (CSU) steht bevor; Debatte über humanitäre Migrationswende.",
+      "description": "Bundesregierung (Merz-Regierung) schiebt Dutzende afghanische Straftäter per Flug von Leipzig nach Kabul ab.",
       "source": "welt.de"
-    },
-    {
-      "date": "18.07.2025",
-      "category": "Wirtschaft",
-      "description": "Aktuelle Börsenkurse: DAX bei 24.371 (+1,5%), MDAX bei 31.015 (+1,0%), Bitcoin bei 120.321 (0,0%).",
-      "source": "n-tv.de"
     }
   ],
   "technology": [
@@ -107,28 +83,28 @@
       "description": "Build Tool - Aktuelle stabile Version"
     },
     {
-      "name": "ChatGPT",
-      "version": "Agent Capability Rollout",
-      "date": "18.07.2025",
-      "description": "OpenAI hat einen neuen, allgemeinen KI-Agenten in ChatGPT eingeführt, der komplexe Aufgaben automatisieren kann."
-    },
-    {
       "name": "Google Chrome",
-      "version": "127.0.6533.100",
+      "version": "128.0.6543.21",
       "date": "16.07.2025",
-      "description": "Wichtige Sicherheitsupdates zur Behebung kritischer Schwachstellen und Leistungsverbesserungen."
+      "description": "Release mit verbesserten Datenschutzfunktionen und optimierter WebGPU-Leistung."
     },
     {
-      "name": "Android OS",
-      "version": "15.0.1",
+      "name": "OpenAI GPT-5 Mini",
+      "version": "New Model",
       "date": "15.07.2025",
-      "description": "Monatliches Sicherheitsupdate mit Patches für diverse Schwachstellen und allgemeinen Stabilitätsverbesserungen."
+      "description": "Vorstellung eines neuen, kleineren KI-Modells mit Fokus auf Echtzeit-Interaktionen und geringere Latenz."
     },
     {
-      "name": "Node.js",
-      "version": "v24.4.1",
+      "name": "Android",
+      "version": "16 Beta 3",
+      "date": "12.07.2025",
+      "description": "Dritte Beta-Version mit Verbesserungen bei der Akkulaufzeit und neuen Benachrichtigungsoptionen."
+    },
+    {
+      "name": "React",
+      "version": "19.1.0",
       "date": "17.07.2025",
-      "description": "Aktualisierung mit Bugfixes, Stabilitätsverbesserungen und kleineren Leistungsoptimierungen."
+      "description": "Minor-Update mit Performance-Optimierungen und Bugfixes für Concurrent Features."
     }
   ],
   "importantFacts": [
@@ -150,10 +126,10 @@
     "updateFrequency": "Alle 6 Stunden"
   },
   "statistics": {
-    "eventsCount": 5,
+    "eventsCount": 1,
     "technologyCount": 12,
     "factsCount": 3,
-    "generationTimeMs": 11221,
+    "generationTimeMs": 15455,
     "newsSourcesQueried": 12,
     "techSourcesQueried": 6
   }
