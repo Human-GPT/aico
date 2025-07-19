@@ -1,12 +1,12 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-19T13:37:39.700Z",
-    "nextUpdate": "2025-07-19T19:37:39.700Z",
+    "lastUpdated": "2025-07-19T18:52:34.571Z",
+    "nextUpdate": "2025-07-20T00:52:34.571Z",
     "version": "2.2",
     "purpose": "Aktuelle Kontextinformationen für KI-Systeme",
     "source": "Automatisch generiert via Gemini AI + News-Scraping",
     "dataQuality": {
-      "events": "good",
+      "events": "fallback",
       "technology": "good",
       "facts": "good"
     },
@@ -21,40 +21,16 @@
     "dayOfWeek": "Samstag",
     "monthName": "Juli",
     "iso": "2025-07-19",
-    "timestamp": "2025-07-19T13:37:39.700Z",
+    "timestamp": "2025-07-19T18:52:34.571Z",
     "timezone": "UTC",
     "weekOfYear": 29
   },
   "events": [
     {
       "date": "19.7.2025",
-      "category": "Gesellschaft",
-      "description": "Diskussion über finanzielle Freiheit und die Realisierbarkeit eines früheren Rentenalters (Rente mit 40) im Gegensatz zum gesetzlichen Renteneintritt mit 67.",
-      "source": "www.tagesschau.de"
-    },
-    {
-      "date": "19.7.2025",
-      "category": "Politik",
-      "description": "Die US-Regierung (USAID) plant die Vernichtung von Riegeln, die ursprünglich für hungernde Kinder vorgesehen waren.",
-      "source": "www.zeit.de"
-    },
-    {
-      "date": "19.7.2025",
-      "category": "Gesellschaft",
-      "description": "Analyse des Phänomens 'Backlash', bei dem Frauen im Diskurs Kompetenz und Vernunft abgesprochen werden, illustriert am Fall Frauke Brosius-Gersdorf.",
-      "source": "www.sueddeutsche.de"
-    },
-    {
-      "date": "19.7.2025",
-      "category": "Politik",
-      "description": "Verteidigungsminister Boris Pistorius äußert Bedenken hinsichtlich eines möglichen Rüstungsversagens bei Deutschlands Ziel, die größte konventionelle Armee der Europäischen Union aufzubauen.",
-      "source": "www.welt.de"
-    },
-    {
-      "date": "19.7.2025",
-      "category": "Wirtschaft",
-      "description": "Aktuelle Börsenkurse zeigen leichte Schwankungen: DAX bei 24.290 (-0,3%), MDAX bei 31.098 (0,3%), DOW Ind bei 44.341 (-0,4%), Bitcoin bei 118.384 (0,5%).",
-      "source": "www.n-tv.de"
+      "category": "System",
+      "description": "AICO System erfolgreich aktualisiert",
+      "source": "AICO"
     }
   ],
   "technology": [
@@ -108,27 +84,27 @@
     },
     {
       "name": "Google Chrome",
-      "version": "128.0.6543.21",
+      "version": "127.0.6533.100",
       "date": "18.07.2025",
-      "description": "Wichtige Sicherheitsupdates zur Behebung kritischer Schwachstellen und Leistungsverbesserungen."
+      "description": "Wichtige Sicherheitsupdates zur Behebung mehrerer High-Severity-Schwachstellen und Stabilitätsverbesserungen."
     },
     {
-      "name": "OpenAI ChatGPT API",
-      "version": "N/A",
+      "name": "Gemini 1.5 Pro",
+      "version": "Update",
       "date": "17.07.2025",
-      "description": "Erweiterte Funktionen für Tool-Calling und verbesserte Kontextverwaltung für komplexere Interaktionen."
+      "description": "Erweiterte Kontextfenster-Kapazitäten und verbesserte Multimodalität für komplexere Anfragen und Datenanalysen."
     },
     {
-      "name": "Android OS",
-      "version": "16.0.1",
-      "date": "15.07.2025",
-      "description": "Monatliche Sicherheits-Patches zur Behebung von Systemschwachstellen und Stabilitätsverbesserungen."
+      "name": "iOS",
+      "version": "18.0.1",
+      "date": "16.07.2025",
+      "description": "Behebung kritischer Zero-Day-Sicherheitslücken und allgemeine Bugfixes zur Systemstabilität."
     },
     {
       "name": "React",
       "version": "19.1.0",
-      "date": "16.07.2025",
-      "description": "Fehlerbehebungen und Performance-Optimierungen, basierend auf dem Feedback zur Version 19.0.0."
+      "date": "15.07.2025",
+      "description": "Stabilitäts- und Performance-Optimierungen, Vorbereitung für Concurrent Features und verbesserte Server Components."
     }
   ],
   "importantFacts": [
@@ -150,10 +126,10 @@
     "updateFrequency": "Alle 6 Stunden"
   },
   "statistics": {
-    "eventsCount": 5,
+    "eventsCount": 1,
     "technologyCount": 12,
     "factsCount": 3,
-    "generationTimeMs": 13470,
+    "generationTimeMs": 12600,
     "newsSourcesQueried": 12,
     "techSourcesQueried": 6
   }
