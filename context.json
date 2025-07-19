@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-19T03:44:37.238Z",
-    "nextUpdate": "2025-07-19T09:44:37.238Z",
+    "lastUpdated": "2025-07-19T06:55:22.814Z",
+    "nextUpdate": "2025-07-19T12:55:22.814Z",
     "version": "2.2",
     "purpose": "Aktuelle Kontextinformationen für KI-Systeme",
     "source": "Automatisch generiert via Gemini AI + News-Scraping",
@@ -21,7 +21,7 @@
     "dayOfWeek": "Samstag",
     "monthName": "Juli",
     "iso": "2025-07-19",
-    "timestamp": "2025-07-19T03:44:37.238Z",
+    "timestamp": "2025-07-19T06:55:22.814Z",
     "timezone": "UTC",
     "weekOfYear": 29
   },
@@ -29,8 +29,8 @@
     {
       "date": "19.07.2025",
       "category": "Politik",
-      "description": "Donald Trump verklagt Wall Street Journal und Rupert Murdoch nach Berichterstattung im Fall Epstein über einen angeblichen Brief.",
-      "source": "sueddeutsche.de"
+      "description": "Donald Trump verklagt das Wall Street Journal und Rupert Murdoch wegen eines Berichts zum Fall Epstein.",
+      "source": "tagesschau.de"
     }
   ],
   "technology": [
@@ -84,9 +84,27 @@
     },
     {
       "name": "Google Chrome",
-      "version": "127.0.6533.100",
+      "version": "130.0.6543.21",
+      "date": "17.07.2025",
+      "description": "Sicherheitsupdate zur Behebung kritischer Schwachstellen und Performance-Optimierungen."
+    },
+    {
+      "name": "ChatGPT (OpenAI)",
+      "version": "GPT-4o-2025-07-15",
+      "date": "15.07.2025",
+      "description": "Verbesserte Kontextverständnis und schnellere Antwortzeiten für komplexe Anfragen, sowie erweiterte API-Funktionen für Entwickler."
+    },
+    {
+      "name": "Android OS",
+      "version": "16 Beta 3",
       "date": "16.07.2025",
-      "description": "Wichtige Sicherheitsupdates zur Behebung kritischer Schwachstellen und Performance-Verbesserungen für eine stabilere Browser-Erfahrung."
+      "description": "Stabilitätsverbesserungen, Fehlerbehebungen und Optimierungen der Akkulaufzeit für die kommende Hauptversion."
+    },
+    {
+      "name": "Node.js",
+      "version": "24.4.1",
+      "date": "18.07.2025",
+      "description": "Patch-Release mit wichtigen Fehlerbehebungen und Sicherheitsupdates für die 24.x LTS-Linie."
     }
   ],
   "importantFacts": [
@@ -109,9 +127,9 @@
   },
   "statistics": {
     "eventsCount": 1,
-    "technologyCount": 9,
+    "technologyCount": 12,
     "factsCount": 3,
-    "generationTimeMs": 13223,
+    "generationTimeMs": 12789,
     "newsSourcesQueried": 12,
     "techSourcesQueried": 6
   }
