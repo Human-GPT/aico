@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-18T18:56:06.087Z",
-    "nextUpdate": "2025-07-19T00:56:06.087Z",
+    "lastUpdated": "2025-07-19T03:44:37.238Z",
+    "nextUpdate": "2025-07-19T09:44:37.238Z",
     "version": "2.2",
     "purpose": "Aktuelle Kontextinformationen für KI-Systeme",
     "source": "Automatisch generiert via Gemini AI + News-Scraping",
@@ -16,77 +16,77 @@
   "currentDate": {
     "year": 2025,
     "month": 7,
-    "day": 18,
+    "day": 19,
     "quarter": 3,
-    "dayOfWeek": "Freitag",
+    "dayOfWeek": "Samstag",
     "monthName": "Juli",
-    "iso": "2025-07-18",
-    "timestamp": "2025-07-18T18:56:06.087Z",
+    "iso": "2025-07-19",
+    "timestamp": "2025-07-19T03:44:37.238Z",
     "timezone": "UTC",
     "weekOfYear": 29
   },
   "events": [
     {
-      "date": "18.07.2025",
+      "date": "19.07.2025",
       "category": "Politik",
-      "description": "Debatte über einen möglichen 'Boomer-Soli' und die aktuelle Lage der Altersarmut in Deutschland; DIW beteiligt.",
-      "source": "tagesschau.de"
+      "description": "Donald Trump verklagt Wall Street Journal und Rupert Murdoch nach Berichterstattung im Fall Epstein über einen angeblichen Brief.",
+      "source": "sueddeutsche.de"
     }
   ],
   "technology": [
     {
       "name": "Node.js",
       "version": "24.4.1",
-      "date": "18.7.2025",
+      "date": "19.7.2025",
       "description": "JavaScript Runtime - Aktuelle stabile Version"
     },
     {
       "name": "React",
       "version": "19.1.0",
-      "date": "18.7.2025",
+      "date": "19.7.2025",
       "description": "UI Framework - Aktuelle stabile Version"
     },
     {
       "name": "Vue.js",
       "version": "3.5.17",
-      "date": "18.7.2025",
+      "date": "19.7.2025",
       "description": "Progressive Framework - Aktuelle stabile Version"
     },
     {
       "name": "Angular",
       "version": "20.1.2",
-      "date": "18.7.2025",
+      "date": "19.7.2025",
       "description": "Web Framework - Aktuelle stabile Version"
     },
     {
       "name": "TypeScript",
       "version": "5.8.3",
-      "date": "18.7.2025",
+      "date": "19.7.2025",
       "description": "JavaScript mit Types - Aktuelle stabile Version"
     },
     {
       "name": "Express.js",
       "version": "5.1.0",
-      "date": "18.7.2025",
+      "date": "19.7.2025",
       "description": "Web Server Framework - Aktuelle stabile Version"
     },
     {
       "name": "Webpack",
       "version": "5.100.2",
-      "date": "18.7.2025",
+      "date": "19.7.2025",
       "description": "Module Bundler - Aktuelle stabile Version"
     },
     {
       "name": "Vite",
       "version": "7.0.5",
-      "date": "18.7.2025",
+      "date": "19.7.2025",
       "description": "Build Tool - Aktuelle stabile Version"
     },
     {
       "name": "Google Chrome",
-      "version": "v130.0.6789.123",
+      "version": "127.0.6533.100",
       "date": "16.07.2025",
-      "description": "Stabile Version mit verbesserter WebGPU-Unterstützung und neuen Privacy Sandbox APIs für Entwickler."
+      "description": "Wichtige Sicherheitsupdates zur Behebung kritischer Schwachstellen und Performance-Verbesserungen für eine stabilere Browser-Erfahrung."
     }
   ],
   "importantFacts": [
@@ -103,7 +103,7 @@
       "Multimodale Systeme",
       "LLM Integration"
     ],
-    "lastMajorUpdate": "2025-07-18",
+    "lastMajorUpdate": "2025-07-19",
     "newsCoverage": "Letzte 7 Tage",
     "updateFrequency": "Alle 6 Stunden"
   },
@@ -111,7 +111,7 @@
     "eventsCount": 1,
     "technologyCount": 9,
     "factsCount": 3,
-    "generationTimeMs": 14409,
+    "generationTimeMs": 13223,
     "newsSourcesQueried": 12,
     "techSourcesQueried": 6
   }
