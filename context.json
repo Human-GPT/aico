@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-19T18:52:34.571Z",
-    "nextUpdate": "2025-07-20T00:52:34.571Z",
+    "lastUpdated": "2025-07-20T04:00:09.059Z",
+    "nextUpdate": "2025-07-20T10:00:09.059Z",
     "version": "2.2",
     "purpose": "Aktuelle Kontextinformationen für KI-Systeme",
     "source": "Automatisch generiert via Gemini AI + News-Scraping",
@@ -16,101 +16,104 @@
   "currentDate": {
     "year": 2025,
     "month": 7,
-    "day": 19,
+    "day": 20,
     "quarter": 3,
-    "dayOfWeek": "Samstag",
+    "dayOfWeek": "Sonntag",
     "monthName": "Juli",
-    "iso": "2025-07-19",
-    "timestamp": "2025-07-19T18:52:34.571Z",
+    "iso": "2025-07-20",
+    "timestamp": "2025-07-20T04:00:09.059Z",
     "timezone": "UTC",
     "weekOfYear": 29
   },
   "events": [
     {
-      "date": "19.7.2025",
-      "category": "System",
-      "description": "AICO System erfolgreich aktualisiert",
-      "source": "AICO"
+      "date": "20.07.2025",
+      "category": "Technologie",
+      "description": "Millionen E-Patientenakten existieren, werden aber von Patienten kaum aktiv genutzt.",
+      "source": "tagesschau.de"
     }
   ],
   "technology": [
     {
       "name": "Node.js",
       "version": "24.4.1",
-      "date": "19.7.2025",
+      "date": "20.7.2025",
       "description": "JavaScript Runtime - Aktuelle stabile Version"
     },
     {
       "name": "React",
       "version": "19.1.0",
-      "date": "19.7.2025",
+      "date": "20.7.2025",
       "description": "UI Framework - Aktuelle stabile Version"
     },
     {
       "name": "Vue.js",
       "version": "3.5.17",
-      "date": "19.7.2025",
+      "date": "20.7.2025",
       "description": "Progressive Framework - Aktuelle stabile Version"
     },
     {
       "name": "Angular",
       "version": "20.1.2",
-      "date": "19.7.2025",
+      "date": "20.7.2025",
       "description": "Web Framework - Aktuelle stabile Version"
     },
     {
       "name": "TypeScript",
       "version": "5.8.3",
-      "date": "19.7.2025",
+      "date": "20.7.2025",
       "description": "JavaScript mit Types - Aktuelle stabile Version"
     },
     {
       "name": "Express.js",
       "version": "5.1.0",
-      "date": "19.7.2025",
+      "date": "20.7.2025",
       "description": "Web Server Framework - Aktuelle stabile Version"
     },
     {
       "name": "Webpack",
       "version": "5.100.2",
-      "date": "19.7.2025",
+      "date": "20.7.2025",
       "description": "Module Bundler - Aktuelle stabile Version"
     },
     {
       "name": "Vite",
       "version": "7.0.5",
-      "date": "19.7.2025",
+      "date": "20.7.2025",
       "description": "Build Tool - Aktuelle stabile Version"
     },
     {
       "name": "Google Chrome",
-      "version": "127.0.6533.100",
+      "version": "v130.0.6789.123",
       "date": "18.07.2025",
-      "description": "Wichtige Sicherheitsupdates zur Behebung mehrerer High-Severity-Schwachstellen und Stabilitätsverbesserungen."
+      "description": "Wichtige Sicherheitsupdates und Leistungsverbesserungen für die WebAssembly-Engine."
     },
     {
-      "name": "Gemini 1.5 Pro",
-      "version": "Update",
-      "date": "17.07.2025",
-      "description": "Erweiterte Kontextfenster-Kapazitäten und verbesserte Multimodalität für komplexere Anfragen und Datenanalysen."
+      "name": "ChatGPT (OpenAI)",
+      "version": "GPT-4.5 Turbo",
+      "date": "16.07.2025",
+      "description": "Verbesserte Argumentationsfähigkeiten und erweiterter Kontextfenster für API-Nutzer."
     },
     {
       "name": "iOS",
-      "version": "18.0.1",
-      "date": "16.07.2025",
-      "description": "Behebung kritischer Zero-Day-Sicherheitslücken und allgemeine Bugfixes zur Systemstabilität."
+      "version": "19.0.1",
+      "date": "15.07.2025",
+      "description": "Kritische Fehlerbehebungen für Akkuverbrauch und WLAN-Verbindungsprobleme."
     },
     {
       "name": "React",
-      "version": "19.1.0",
-      "date": "15.07.2025",
-      "description": "Stabilitäts- und Performance-Optimierungen, Vorbereitung für Concurrent Features und verbesserte Server Components."
+      "version": "v19.1.0",
+      "date": "19.07.2025",
+      "description": "Kleinere Bugfixes und Leistungsoptimierungen für das Concurrent Rendering."
     }
   ],
   "importantFacts": [
-    "Das aktuelle Jahr ist 2025",
-    "KI-Assistenten sind alltäglich geworden",
-    "Automatisierung hat stark zugenommen"
+    "Das aktuelle Jahr ist 2025.",
+    "Regulierungen für KI-Ethik und Datenschutz sind weltweit in Entwicklung und werden zunehmend implementiert.",
+    "Große Sprachmodelle (LLMs) und multimodale KI-Systeme sind Standardwerkzeuge in vielen Anwendungen.",
+    "Die Integration von KI in den Alltag und die Arbeitswelt hat sich seit 2024 stark beschleunigt, was neue Herausforderungen und Chancen schafft.",
+    "Globale Lieferketten bleiben unter Druck, und die digitale Souveränität ist ein zentrales politisches Thema.",
+    "Die Entwicklung spezialisierter KI-Agenten und die Bedeutung von hochwertigen, kuratierten Daten für KI-Modelle nehmen stark zu."
   ],
   "context": {
     "timeframe": "Juli 2025",
@@ -121,15 +124,15 @@
       "Multimodale Systeme",
       "LLM Integration"
     ],
-    "lastMajorUpdate": "2025-07-19",
+    "lastMajorUpdate": "2025-07-20",
     "newsCoverage": "Letzte 7 Tage",
     "updateFrequency": "Alle 6 Stunden"
   },
   "statistics": {
     "eventsCount": 1,
     "technologyCount": 12,
-    "factsCount": 3,
-    "generationTimeMs": 12600,
+    "factsCount": 6,
+    "generationTimeMs": 12704,
     "newsSourcesQueried": 12,
     "techSourcesQueried": 6
   }
