@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-20T06:54:12.711Z",
-    "nextUpdate": "2025-07-20T12:54:12.711Z",
+    "lastUpdated": "2025-07-20T13:40:33.136Z",
+    "nextUpdate": "2025-07-20T19:40:33.136Z",
     "version": "2.2",
     "purpose": "Aktuelle Kontextinformationen für KI-Systeme",
     "source": "Automatisch generiert via Gemini AI + News-Scraping",
@@ -21,27 +21,39 @@
     "dayOfWeek": "Sonntag",
     "monthName": "Juli",
     "iso": "2025-07-20",
-    "timestamp": "2025-07-20T06:54:12.711Z",
+    "timestamp": "2025-07-20T13:40:33.136Z",
     "timezone": "UTC",
     "weekOfYear": 29
   },
   "events": [
     {
       "date": "20.07.2025",
-      "category": "Gesellschaft",
-      "description": "Die deutsche DFB-Elf siegt im Elfmeterschießen und erreicht das Halbfinale der Fußball-Europameisterschaft.",
+      "category": "Politik",
+      "description": "AfD-Chefin Alice Weidel im ARD-Sommerinterview.",
       "source": "tagesschau.de"
     },
     {
       "date": "20.07.2025",
       "category": "Politik",
-      "description": "Geheimdienstkreise äußern Zweifel an der deutschen Segelyacht-Theorie bezüglich der Nord-Stream-Pipelines; Ermittler vermuten ein ukrainisches Kommando.",
+      "description": "Russlands Präsident Putin wirft 'alles in den Kampf' in der Ukraine.",
+      "source": "zeit.de"
+    },
+    {
+      "date": "20.07.2025",
+      "category": "Gesellschaft",
+      "description": "Kathrin Hendrich (Deutschland) erhält rote Karte im Fußball-Halbfinale gegen Spanien.",
+      "source": "sueddeutsche.de"
+    },
+    {
+      "date": "20.07.2025",
+      "category": "Politik",
+      "description": "Europäische Länder nutzen einen 'Trick', um US-Präsident Trump für Ukraine-Hilfen zu gewinnen.",
       "source": "welt.de"
     },
     {
       "date": "20.07.2025",
       "category": "Wirtschaft",
-      "description": "Aktuelle Börsenkurse: DAX bei 24.290 (-0,3%), MDAX bei 31.098 (0,3%), ESX bei 5.359 (-0,3%), DOW Ind bei 44.341 (-0,4%), EUR bei 1,1632 (0,0%), Öl bei 66,03 (-0,3%), Gold bei 3.350 (0,2%), Bitcoin bei 117.962 (0,1%).",
+      "description": "Aktuelle Börsenkurse (DAX, MDAX, ESX, DOW) und Rohstoffpreise (Öl, Gold, Bitcoin).",
       "source": "n-tv.de"
     }
   ],
@@ -96,36 +108,33 @@
     },
     {
       "name": "Google Chrome",
-      "version": "130.0.6789.123",
-      "date": "19.07.2025",
-      "description": "Wichtige Sicherheitsupdates zur Behebung mehrerer kritischer Schwachstellen und Leistungsverbesserungen für WebGL."
-    },
-    {
-      "name": "OpenAI ChatGPT API",
-      "version": "gpt-5.1-turbo",
+      "version": "127.0.6533.100",
       "date": "18.07.2025",
-      "description": "Einführung einer neuen Multimodal-Fähigkeit für verbesserte Bild- und Videoanalyse sowie optimierte API-Latenz."
+      "description": "Wichtige Sicherheitsupdates zur Behebung mehrerer High-Severity-Schwachstellen und Leistungsverbesserungen."
     },
     {
-      "name": "iOS",
-      "version": "19.6.1",
+      "name": "OpenAI ChatGPT",
+      "version": "Model Update (GPT-4o)",
       "date": "17.07.2025",
-      "description": "Dringendes Sicherheitsupdate zur Behebung einer Zero-Day-Schwachstelle im Kernel, die potenziell zur Remote-Code-Ausführung führen könnte."
+      "description": "Verbesserungen der Reasoning-Fähigkeiten und Optimierungen der Antwortgeschwindigkeit für das GPT-4o Modell."
     },
     {
-      "name": "React",
-      "version": "19.1.0",
-      "date": "16.07.2025",
-      "description": "Bugfixes und Performance-Optimierungen nach dem Release von React 19, insbesondere für Server Components und Asset Loading."
+      "name": "Android Security Bulletin",
+      "version": "Juli 2025 Patch",
+      "date": "15.07.2025",
+      "description": "Monatliche Sicherheitsupdates zur Behebung kritischer Schwachstellen in Systemkomponenten und Drittanbieter-Bibliotheken."
+    },
+    {
+      "name": "Node.js",
+      "version": "v24.4.1",
+      "date": "19.07.2025",
+      "description": "Minor-Release mit Bugfixes, Stabilitätsverbesserungen und aktualisierten Abhängigkeiten."
     }
   ],
   "importantFacts": [
-    "Das aktuelle Jahr ist 2025.",
-    "Multimodale KI-Modelle und Edge AI sind technologische Standards.",
-    "Cloud-basierte KI-Plattformen und spezialisierte MLOps-Tools sind weit verbreitet.",
-    "Die Integration von KI in Alltag und Wirtschaft ist stark fortgeschritten.",
-    "Regulierungsrahmen für KI, insbesondere in Bezug auf Ethik und Sicherheit, werden global etabliert.",
-    "Globale Lieferketten und geopolitische Spannungen beeinflussen weiterhin die Weltwirtschaft."
+    "Das aktuelle Jahr ist 2025",
+    "KI-Assistenten sind alltäglich geworden",
+    "Automatisierung hat stark zugenommen"
   ],
   "context": {
     "timeframe": "Juli 2025",
@@ -141,10 +150,10 @@
     "updateFrequency": "Alle 6 Stunden"
   },
   "statistics": {
-    "eventsCount": 3,
+    "eventsCount": 5,
     "technologyCount": 12,
-    "factsCount": 6,
-    "generationTimeMs": 12563,
+    "factsCount": 3,
+    "generationTimeMs": 11815,
     "newsSourcesQueried": 12,
     "techSourcesQueried": 6
   }
