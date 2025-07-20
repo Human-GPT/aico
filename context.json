@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-20T13:40:33.136Z",
-    "nextUpdate": "2025-07-20T19:40:33.136Z",
+    "lastUpdated": "2025-07-20T18:52:42.865Z",
+    "nextUpdate": "2025-07-21T00:52:42.865Z",
     "version": "2.2",
     "purpose": "Aktuelle Kontextinformationen für KI-Systeme",
     "source": "Automatisch generiert via Gemini AI + News-Scraping",
@@ -21,7 +21,7 @@
     "dayOfWeek": "Sonntag",
     "monthName": "Juli",
     "iso": "2025-07-20",
-    "timestamp": "2025-07-20T13:40:33.136Z",
+    "timestamp": "2025-07-20T18:52:42.865Z",
     "timezone": "UTC",
     "weekOfYear": 29
   },
@@ -29,31 +29,31 @@
     {
       "date": "20.07.2025",
       "category": "Politik",
-      "description": "AfD-Chefin Alice Weidel im ARD-Sommerinterview.",
+      "description": "AfD-Vorsitzende Alice Weidel gab ein ARD-Sommerinterview, in dem sie Vorwürfe gegen Merz erhob und das Bürgergeld kritisierte.",
       "source": "tagesschau.de"
     },
     {
       "date": "20.07.2025",
       "category": "Politik",
-      "description": "Russlands Präsident Putin wirft 'alles in den Kampf' in der Ukraine.",
+      "description": "Alice Weidels ARD-Sommerinterview wurde als 'denkwürdig' beschrieben.",
       "source": "zeit.de"
     },
     {
       "date": "20.07.2025",
-      "category": "Gesellschaft",
-      "description": "Kathrin Hendrich (Deutschland) erhält rote Karte im Fußball-Halbfinale gegen Spanien.",
+      "category": "Politik",
+      "description": "Der US-Präsident (impliziert Trump) steht unter Druck seiner Claqueure und verklagt den Medienunternehmer Rupert Murdoch; die Affäre Epstein wird im Kontext der Maga-Bewegung erwähnt.",
       "source": "sueddeutsche.de"
     },
     {
       "date": "20.07.2025",
       "category": "Politik",
-      "description": "Europäische Länder nutzen einen 'Trick', um US-Präsident Trump für Ukraine-Hilfen zu gewinnen.",
+      "description": "Eine Allensbacher Umfrage zeigt, dass ein AfD-Parteiverbot als 'fixe Idee einer Minderheit' wahrgenommen wird, nach einer konzertierten Aktion im Januar 2024.",
       "source": "welt.de"
     },
     {
       "date": "20.07.2025",
       "category": "Wirtschaft",
-      "description": "Aktuelle Börsenkurse (DAX, MDAX, ESX, DOW) und Rohstoffpreise (Öl, Gold, Bitcoin).",
+      "description": "Aktuelle Börsenkurse zeigen leichte Schwankungen: DAX -0,3%, MDAX +0,3%, DOW Ind -0,4%, Bitcoin +0,6%.",
       "source": "n-tv.de"
     }
   ],
@@ -108,27 +108,9 @@
     },
     {
       "name": "Google Chrome",
-      "version": "127.0.6533.100",
+      "version": "128.0.6543.21",
       "date": "18.07.2025",
-      "description": "Wichtige Sicherheitsupdates zur Behebung mehrerer High-Severity-Schwachstellen und Leistungsverbesserungen."
-    },
-    {
-      "name": "OpenAI ChatGPT",
-      "version": "Model Update (GPT-4o)",
-      "date": "17.07.2025",
-      "description": "Verbesserungen der Reasoning-Fähigkeiten und Optimierungen der Antwortgeschwindigkeit für das GPT-4o Modell."
-    },
-    {
-      "name": "Android Security Bulletin",
-      "version": "Juli 2025 Patch",
-      "date": "15.07.2025",
-      "description": "Monatliche Sicherheitsupdates zur Behebung kritischer Schwachstellen in Systemkomponenten und Drittanbieter-Bibliotheken."
-    },
-    {
-      "name": "Node.js",
-      "version": "v24.4.1",
-      "date": "19.07.2025",
-      "description": "Minor-Release mit Bugfixes, Stabilitätsverbesserungen und aktualisierten Abhängigkeiten."
+      "description": "Behebung kritischer Sicherheitslücken und Leistungsverbesserungen für WebAssembly."
     }
   ],
   "importantFacts": [
@@ -151,9 +133,9 @@
   },
   "statistics": {
     "eventsCount": 5,
-    "technologyCount": 12,
+    "technologyCount": 9,
     "factsCount": 3,
-    "generationTimeMs": 11815,
+    "generationTimeMs": 13286,
     "newsSourcesQueried": 12,
     "techSourcesQueried": 6
   }
