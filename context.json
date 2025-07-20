@@ -1,12 +1,12 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-20T04:00:09.059Z",
-    "nextUpdate": "2025-07-20T10:00:09.059Z",
+    "lastUpdated": "2025-07-20T06:54:12.711Z",
+    "nextUpdate": "2025-07-20T12:54:12.711Z",
     "version": "2.2",
     "purpose": "Aktuelle Kontextinformationen für KI-Systeme",
     "source": "Automatisch generiert via Gemini AI + News-Scraping",
     "dataQuality": {
-      "events": "fallback",
+      "events": "good",
       "technology": "good",
       "facts": "good"
     },
@@ -21,16 +21,28 @@
     "dayOfWeek": "Sonntag",
     "monthName": "Juli",
     "iso": "2025-07-20",
-    "timestamp": "2025-07-20T04:00:09.059Z",
+    "timestamp": "2025-07-20T06:54:12.711Z",
     "timezone": "UTC",
     "weekOfYear": 29
   },
   "events": [
     {
       "date": "20.07.2025",
-      "category": "Technologie",
-      "description": "Millionen E-Patientenakten existieren, werden aber von Patienten kaum aktiv genutzt.",
+      "category": "Gesellschaft",
+      "description": "Die deutsche DFB-Elf siegt im Elfmeterschießen und erreicht das Halbfinale der Fußball-Europameisterschaft.",
       "source": "tagesschau.de"
+    },
+    {
+      "date": "20.07.2025",
+      "category": "Politik",
+      "description": "Geheimdienstkreise äußern Zweifel an der deutschen Segelyacht-Theorie bezüglich der Nord-Stream-Pipelines; Ermittler vermuten ein ukrainisches Kommando.",
+      "source": "welt.de"
+    },
+    {
+      "date": "20.07.2025",
+      "category": "Wirtschaft",
+      "description": "Aktuelle Börsenkurse: DAX bei 24.290 (-0,3%), MDAX bei 31.098 (0,3%), ESX bei 5.359 (-0,3%), DOW Ind bei 44.341 (-0,4%), EUR bei 1,1632 (0,0%), Öl bei 66,03 (-0,3%), Gold bei 3.350 (0,2%), Bitcoin bei 117.962 (0,1%).",
+      "source": "n-tv.de"
     }
   ],
   "technology": [
@@ -84,36 +96,36 @@
     },
     {
       "name": "Google Chrome",
-      "version": "v130.0.6789.123",
-      "date": "18.07.2025",
-      "description": "Wichtige Sicherheitsupdates und Leistungsverbesserungen für die WebAssembly-Engine."
+      "version": "130.0.6789.123",
+      "date": "19.07.2025",
+      "description": "Wichtige Sicherheitsupdates zur Behebung mehrerer kritischer Schwachstellen und Leistungsverbesserungen für WebGL."
     },
     {
-      "name": "ChatGPT (OpenAI)",
-      "version": "GPT-4.5 Turbo",
-      "date": "16.07.2025",
-      "description": "Verbesserte Argumentationsfähigkeiten und erweiterter Kontextfenster für API-Nutzer."
+      "name": "OpenAI ChatGPT API",
+      "version": "gpt-5.1-turbo",
+      "date": "18.07.2025",
+      "description": "Einführung einer neuen Multimodal-Fähigkeit für verbesserte Bild- und Videoanalyse sowie optimierte API-Latenz."
     },
     {
       "name": "iOS",
-      "version": "19.0.1",
-      "date": "15.07.2025",
-      "description": "Kritische Fehlerbehebungen für Akkuverbrauch und WLAN-Verbindungsprobleme."
+      "version": "19.6.1",
+      "date": "17.07.2025",
+      "description": "Dringendes Sicherheitsupdate zur Behebung einer Zero-Day-Schwachstelle im Kernel, die potenziell zur Remote-Code-Ausführung führen könnte."
     },
     {
       "name": "React",
-      "version": "v19.1.0",
-      "date": "19.07.2025",
-      "description": "Kleinere Bugfixes und Leistungsoptimierungen für das Concurrent Rendering."
+      "version": "19.1.0",
+      "date": "16.07.2025",
+      "description": "Bugfixes und Performance-Optimierungen nach dem Release von React 19, insbesondere für Server Components und Asset Loading."
     }
   ],
   "importantFacts": [
     "Das aktuelle Jahr ist 2025.",
-    "Regulierungen für KI-Ethik und Datenschutz sind weltweit in Entwicklung und werden zunehmend implementiert.",
-    "Große Sprachmodelle (LLMs) und multimodale KI-Systeme sind Standardwerkzeuge in vielen Anwendungen.",
-    "Die Integration von KI in den Alltag und die Arbeitswelt hat sich seit 2024 stark beschleunigt, was neue Herausforderungen und Chancen schafft.",
-    "Globale Lieferketten bleiben unter Druck, und die digitale Souveränität ist ein zentrales politisches Thema.",
-    "Die Entwicklung spezialisierter KI-Agenten und die Bedeutung von hochwertigen, kuratierten Daten für KI-Modelle nehmen stark zu."
+    "Multimodale KI-Modelle und Edge AI sind technologische Standards.",
+    "Cloud-basierte KI-Plattformen und spezialisierte MLOps-Tools sind weit verbreitet.",
+    "Die Integration von KI in Alltag und Wirtschaft ist stark fortgeschritten.",
+    "Regulierungsrahmen für KI, insbesondere in Bezug auf Ethik und Sicherheit, werden global etabliert.",
+    "Globale Lieferketten und geopolitische Spannungen beeinflussen weiterhin die Weltwirtschaft."
   ],
   "context": {
     "timeframe": "Juli 2025",
@@ -129,10 +141,10 @@
     "updateFrequency": "Alle 6 Stunden"
   },
   "statistics": {
-    "eventsCount": 1,
+    "eventsCount": 3,
     "technologyCount": 12,
     "factsCount": 6,
-    "generationTimeMs": 12704,
+    "generationTimeMs": 12563,
     "newsSourcesQueried": 12,
     "techSourcesQueried": 6
   }
