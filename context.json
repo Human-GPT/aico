@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-21T03:59:34.685Z",
-    "nextUpdate": "2025-07-21T09:59:34.685Z",
+    "lastUpdated": "2025-07-21T06:59:19.221Z",
+    "nextUpdate": "2025-07-21T12:59:19.221Z",
     "version": "2.2",
     "purpose": "Aktuelle Kontextinformationen für KI-Systeme",
     "source": "Automatisch generiert via Gemini AI + News-Scraping",
@@ -21,16 +21,16 @@
     "dayOfWeek": "Montag",
     "monthName": "Juli",
     "iso": "2025-07-21",
-    "timestamp": "2025-07-21T03:59:34.685Z",
+    "timestamp": "2025-07-21T06:59:19.221Z",
     "timezone": "UTC",
     "weekOfYear": 29
   },
   "events": [
     {
-      "date": "21.07.2025",
-      "category": "Politik",
-      "description": "Friedrich Merz trifft Konzerne bei Investitionsgipfel zur Zukunft des Standorts Deutschland.",
-      "source": "tagesschau.de, zeit.de"
+      "date": "21.7.2025",
+      "category": "System",
+      "description": "AICO System erfolgreich aktualisiert",
+      "source": "AICO"
     }
   ],
   "technology": [
@@ -84,27 +84,27 @@
     },
     {
       "name": "Google Chrome",
-      "version": "130.0.6789.123",
+      "version": "128.0.6543.123",
       "date": "18.07.2025",
-      "description": "Verbesserte Performance und neue Datenschutzfunktionen für Drittanbieter-Cookies."
+      "description": "Stabilitäts- und Sicherheitsupdate mit Patches für mehrere kritische Schwachstellen."
     },
     {
-      "name": "Google Gemini",
-      "version": "1.7 Pro",
-      "date": "16.07.2025",
-      "description": "Erweiterte Multimodalität mit verbesserter Videoanalyse und Echtzeit-Sprachinteraktion."
+      "name": "OpenAI ChatGPT",
+      "version": "GPT-4.5 Turbo",
+      "date": "17.07.2025",
+      "description": "Verbesserte Argumentationsfähigkeiten und erweiterte Kontextfenster für komplexere Anfragen."
     },
     {
-      "name": "Android OS",
-      "version": "16 Beta 3",
+      "name": "Android Security Bulletin",
+      "version": "Juli 2025 Patch",
       "date": "15.07.2025",
-      "description": "Stabilitätsverbesserungen und neue API-Funktionen für adaptive UI-Elemente."
+      "description": "Kritische Sicherheitsupdates zur Behebung von Schwachstellen in Systemkomponenten und Treibern."
     },
     {
       "name": "Node.js",
       "version": "v24.4.1",
-      "date": "17.07.2025",
-      "description": "Wichtige Sicherheitsupdates und Stabilitätsverbesserungen."
+      "date": "20.07.2025",
+      "description": "Bugfixes und Performance-Optimierungen für die JavaScript-Laufzeitumgebung."
     }
   ],
   "importantFacts": [
@@ -129,7 +129,7 @@
     "eventsCount": 1,
     "technologyCount": 12,
     "factsCount": 3,
-    "generationTimeMs": 12030,
+    "generationTimeMs": 12576,
     "newsSourcesQueried": 12,
     "techSourcesQueried": 6
   }
