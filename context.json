@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-21T06:59:19.221Z",
-    "nextUpdate": "2025-07-21T12:59:19.221Z",
+    "lastUpdated": "2025-07-21T13:52:13.670Z",
+    "nextUpdate": "2025-07-21T19:52:13.670Z",
     "version": "2.2",
     "purpose": "Aktuelle Kontextinformationen für KI-Systeme",
     "source": "Automatisch generiert via Gemini AI + News-Scraping",
@@ -21,16 +21,16 @@
     "dayOfWeek": "Montag",
     "monthName": "Juli",
     "iso": "2025-07-21",
-    "timestamp": "2025-07-21T06:59:19.221Z",
+    "timestamp": "2025-07-21T13:52:13.670Z",
     "timezone": "UTC",
     "weekOfYear": 29
   },
   "events": [
     {
-      "date": "21.7.2025",
-      "category": "System",
-      "description": "AICO System erfolgreich aktualisiert",
-      "source": "AICO"
+      "date": "21.07.2025",
+      "category": "Politik",
+      "description": "Ermittlungen gegen einen Aktivisten in der Ukraine werden als Willkür und politische Verfolgung kritisiert.",
+      "source": "tagesschau.de"
     }
   ],
   "technology": [
@@ -83,28 +83,10 @@
       "description": "Build Tool - Aktuelle stabile Version"
     },
     {
-      "name": "Google Chrome",
-      "version": "128.0.6543.123",
-      "date": "18.07.2025",
-      "description": "Stabilitäts- und Sicherheitsupdate mit Patches für mehrere kritische Schwachstellen."
-    },
-    {
-      "name": "OpenAI ChatGPT",
-      "version": "GPT-4.5 Turbo",
-      "date": "17.07.2025",
-      "description": "Verbesserte Argumentationsfähigkeiten und erweiterte Kontextfenster für komplexere Anfragen."
-    },
-    {
-      "name": "Android Security Bulletin",
-      "version": "Juli 2025 Patch",
-      "date": "15.07.2025",
-      "description": "Kritische Sicherheitsupdates zur Behebung von Schwachstellen in Systemkomponenten und Treibern."
-    },
-    {
-      "name": "Node.js",
-      "version": "v24.4.1",
+      "name": "Microsoft SharePoint",
+      "version": "Security Patch",
       "date": "20.07.2025",
-      "description": "Bugfixes und Performance-Optimierungen für die JavaScript-Laufzeitumgebung."
+      "description": "Kritischer Sicherheits-Patch zur Behebung einer aktiv ausgenutzten Zero-Day-Schwachstelle in SharePoint Server, die eine Remote Code Execution ermöglichte."
     }
   ],
   "importantFacts": [
@@ -127,9 +109,9 @@
   },
   "statistics": {
     "eventsCount": 1,
-    "technologyCount": 12,
+    "technologyCount": 9,
     "factsCount": 3,
-    "generationTimeMs": 12576,
+    "generationTimeMs": 13676,
     "newsSourcesQueried": 12,
     "techSourcesQueried": 6
   }
