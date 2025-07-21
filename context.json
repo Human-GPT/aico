@@ -1,12 +1,12 @@
 {
   "meta": {
-    "lastUpdated": "2025-07-20T18:52:42.865Z",
-    "nextUpdate": "2025-07-21T00:52:42.865Z",
+    "lastUpdated": "2025-07-21T03:59:34.685Z",
+    "nextUpdate": "2025-07-21T09:59:34.685Z",
     "version": "2.2",
     "purpose": "Aktuelle Kontextinformationen für KI-Systeme",
     "source": "Automatisch generiert via Gemini AI + News-Scraping",
     "dataQuality": {
-      "events": "good",
+      "events": "fallback",
       "technology": "good",
       "facts": "good"
     },
@@ -16,101 +16,95 @@
   "currentDate": {
     "year": 2025,
     "month": 7,
-    "day": 20,
+    "day": 21,
     "quarter": 3,
-    "dayOfWeek": "Sonntag",
+    "dayOfWeek": "Montag",
     "monthName": "Juli",
-    "iso": "2025-07-20",
-    "timestamp": "2025-07-20T18:52:42.865Z",
+    "iso": "2025-07-21",
+    "timestamp": "2025-07-21T03:59:34.685Z",
     "timezone": "UTC",
     "weekOfYear": 29
   },
   "events": [
     {
-      "date": "20.07.2025",
+      "date": "21.07.2025",
       "category": "Politik",
-      "description": "AfD-Vorsitzende Alice Weidel gab ein ARD-Sommerinterview, in dem sie Vorwürfe gegen Merz erhob und das Bürgergeld kritisierte.",
-      "source": "tagesschau.de"
-    },
-    {
-      "date": "20.07.2025",
-      "category": "Politik",
-      "description": "Alice Weidels ARD-Sommerinterview wurde als 'denkwürdig' beschrieben.",
-      "source": "zeit.de"
-    },
-    {
-      "date": "20.07.2025",
-      "category": "Politik",
-      "description": "Der US-Präsident (impliziert Trump) steht unter Druck seiner Claqueure und verklagt den Medienunternehmer Rupert Murdoch; die Affäre Epstein wird im Kontext der Maga-Bewegung erwähnt.",
-      "source": "sueddeutsche.de"
-    },
-    {
-      "date": "20.07.2025",
-      "category": "Politik",
-      "description": "Eine Allensbacher Umfrage zeigt, dass ein AfD-Parteiverbot als 'fixe Idee einer Minderheit' wahrgenommen wird, nach einer konzertierten Aktion im Januar 2024.",
-      "source": "welt.de"
-    },
-    {
-      "date": "20.07.2025",
-      "category": "Wirtschaft",
-      "description": "Aktuelle Börsenkurse zeigen leichte Schwankungen: DAX -0,3%, MDAX +0,3%, DOW Ind -0,4%, Bitcoin +0,6%.",
-      "source": "n-tv.de"
+      "description": "Friedrich Merz trifft Konzerne bei Investitionsgipfel zur Zukunft des Standorts Deutschland.",
+      "source": "tagesschau.de, zeit.de"
     }
   ],
   "technology": [
     {
       "name": "Node.js",
       "version": "24.4.1",
-      "date": "20.7.2025",
+      "date": "21.7.2025",
       "description": "JavaScript Runtime - Aktuelle stabile Version"
     },
     {
       "name": "React",
       "version": "19.1.0",
-      "date": "20.7.2025",
+      "date": "21.7.2025",
       "description": "UI Framework - Aktuelle stabile Version"
     },
     {
       "name": "Vue.js",
       "version": "3.5.17",
-      "date": "20.7.2025",
+      "date": "21.7.2025",
       "description": "Progressive Framework - Aktuelle stabile Version"
     },
     {
       "name": "Angular",
       "version": "20.1.2",
-      "date": "20.7.2025",
+      "date": "21.7.2025",
       "description": "Web Framework - Aktuelle stabile Version"
     },
     {
       "name": "TypeScript",
       "version": "5.8.3",
-      "date": "20.7.2025",
+      "date": "21.7.2025",
       "description": "JavaScript mit Types - Aktuelle stabile Version"
     },
     {
       "name": "Express.js",
       "version": "5.1.0",
-      "date": "20.7.2025",
+      "date": "21.7.2025",
       "description": "Web Server Framework - Aktuelle stabile Version"
     },
     {
       "name": "Webpack",
       "version": "5.100.2",
-      "date": "20.7.2025",
+      "date": "21.7.2025",
       "description": "Module Bundler - Aktuelle stabile Version"
     },
     {
       "name": "Vite",
       "version": "7.0.5",
-      "date": "20.7.2025",
+      "date": "21.7.2025",
       "description": "Build Tool - Aktuelle stabile Version"
     },
     {
       "name": "Google Chrome",
-      "version": "128.0.6543.21",
+      "version": "130.0.6789.123",
       "date": "18.07.2025",
-      "description": "Behebung kritischer Sicherheitslücken und Leistungsverbesserungen für WebAssembly."
+      "description": "Verbesserte Performance und neue Datenschutzfunktionen für Drittanbieter-Cookies."
+    },
+    {
+      "name": "Google Gemini",
+      "version": "1.7 Pro",
+      "date": "16.07.2025",
+      "description": "Erweiterte Multimodalität mit verbesserter Videoanalyse und Echtzeit-Sprachinteraktion."
+    },
+    {
+      "name": "Android OS",
+      "version": "16 Beta 3",
+      "date": "15.07.2025",
+      "description": "Stabilitätsverbesserungen und neue API-Funktionen für adaptive UI-Elemente."
+    },
+    {
+      "name": "Node.js",
+      "version": "v24.4.1",
+      "date": "17.07.2025",
+      "description": "Wichtige Sicherheitsupdates und Stabilitätsverbesserungen."
     }
   ],
   "importantFacts": [
@@ -127,15 +121,15 @@
       "Multimodale Systeme",
       "LLM Integration"
     ],
-    "lastMajorUpdate": "2025-07-20",
+    "lastMajorUpdate": "2025-07-21",
     "newsCoverage": "Letzte 7 Tage",
     "updateFrequency": "Alle 6 Stunden"
   },
   "statistics": {
-    "eventsCount": 5,
-    "technologyCount": 9,
+    "eventsCount": 1,
+    "technologyCount": 12,
     "factsCount": 3,
-    "generationTimeMs": 13286,
+    "generationTimeMs": 12030,
     "newsSourcesQueried": 12,
     "techSourcesQueried": 6
   }
